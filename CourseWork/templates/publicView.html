@@ -1,0 +1,42 @@
+<div layout="row" layout-sm="column">
+    <md-content flex="20" offset="20"  layout-padding layout="column" layout-sm="column">
+        <div layout="column" layout-sm="column">
+            <md-input-container flex>
+                <label>Username</label>
+                <input ng-model="registerData.username" required>
+            </md-input-container>
+            <md-input-container>
+                <label>Password</label>
+                <input ng-model="registerData.password" type="password" required>
+            </md-input-container>
+            <md-input-container flex>
+                <label>Confirm password</label>
+                <input ng-model="registerData.confirmPassword" type="password" required>
+            </md-input-container>
+            <md-input-container flex>
+                <label>Name</label>
+                <input ng-model="registerData.name" type="text" required>
+            </md-input-container>
+            <md-input-container flex>
+                <label>Email</label>
+                <input ng-model="registerData.email" type="email" required>
+            </md-input-container>
+            <md-button class="md-raised md-primary" ng-click="register(registerData)">Register</md-button>
+        </div>
+    </md-content>
+
+    <md-content  flex="20" offset="20" layout-padding layout="column" layout-sm="column">
+        <div layout="column" layout-sm="column">
+            <md-input-container flex>
+                <label>Username</label>
+                <input ng-model="userData.username" required>
+            </md-input-container>
+            <md-input-container flex>
+                <label>Password</label>
+                <input ng-model="userData.password" type="password" required>
+            </md-input-container>
+        </div>
+        <md-button class="md-raised md-primary" ng-click="login(userData)">Login</md-button>
+    </md-content>
+
+</div>

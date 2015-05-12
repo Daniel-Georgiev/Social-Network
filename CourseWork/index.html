@@ -15,32 +15,22 @@
                     <span>Grumpy wizards</span>
                 </h2>
                 <span flex></span>
-                <md-button class="md-raised" id="registerButton" >Register</md-button>
-                <md-button class="md-raised md-primary">Login</md-button>
+                <h2><span>Hello, Daniel</span></h2>
             </div>
         </md-toolbar>
     </md-content>
 </header>
-<div id="wrapper">
-    <md-content layout-padding layout="row" layout-sm="column">
-    <div layout layout-sm="column">
-        <md-input-container flex>
-            <label>Username</label>
-            <input ng-model="userData.username" required>
-        </md-input-container>
-        <md-input-container flex>
-            <label>Password</label>
-            <input ng-model="userData.password" type="password" required>
-        </md-input-container>
-    </div>
-        </md-content>
-    <md-button class="md-raised md-primary" ng-click="login(userData)">Login</md-button>
+<div ng-view>
+
+
 </div>
 
 <!-- Angular Material Dependencies -->
 <script src="js/libs/angular.js"></script>
 <script src="js/libs/angular-animate.js"></script>
 <script src="js/libs/angular-aria.js"></script>
+<script src="js/libs/angular-route.js"></script>
+<script src="js/libs/angular-resource.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.0/angular-material.min.js"></script>
 
 <script src="js/app.js"></script>
