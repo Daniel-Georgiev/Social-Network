@@ -1,0 +1,21 @@
+@import url('http://roboto-webfont.googlecode.com/svn/trunk/roboto.all.css');
+body{
+    font-family: Roboto ;
+}
+#wrapper{
+    width: 960px;
+    margin: 0 auto;
+}
+md-toolbar{
+    background-color: #26c6da!important;
+}
+.md-toolbar-tools{
+    width: 960px;
+    margin: 0 auto;
+}
+.md-primary{
+    background-color:   #00838f!important;
+}
+#registerButton{
+    background-color:#00b8d4;
+}
