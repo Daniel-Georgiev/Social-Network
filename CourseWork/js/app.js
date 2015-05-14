@@ -6,17 +6,20 @@ app.config(function ($routeProvider) {
         templateUrl: 'templates/publicView.html',
         controller: 'AuthController'
     });
-
+    $routeProvider.when('/me/edit', {
+        templateUrl: 'templates/editProfileView.html',
+        controller: 'EditProfileController'
+    })
     $routeProvider.when('/home', {
         templateUrl: 'templates/homeView.html',
         controller: 'AppController'
     });
     $routeProvider.otherwise(
-        {redirectTo: '/'}
+        {redirectTo: '/login'}
     );
 })
 
-app.run(function ($rootScope, $location, authService) {
-    $location.path('/login');
-
-})
+//app.run(function ($rootScope, $location, authService) {
+//    $location.path('/login');
+//
+//})

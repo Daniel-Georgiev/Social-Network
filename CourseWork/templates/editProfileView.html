@@ -1,0 +1,27 @@
+<form>
+    <md-content layout-padding layout="column" layout-sm="column">
+        <div layout="column" layout-sm="column">
+            <md-input-container flex>
+                <label>Name</label>
+                <input ng-model="editData.name" required>
+            </md-input-container>
+            <md-input-container flex>
+                <label>Email</label>
+                <input ng-model="editData.email" type="email" required>
+            </md-input-container>
+            <div ng-controller="UploadCtrl">
+                <img ng-if="image" src="{{image}}" alt="" id="uploadProfileImg">
+                    <input my-upload type="file" name="upload">
+                <img ng-if="image" src="{{image}}" alt="" id="uploadCoverImg">
+                <input my-upload type="file" name="upload">
+            </div>
+            <p>Selected Value: <span class="radioValue">{{ editData.gender}}</span></p>
+            <md-radio-group ng-model="editData.gender">
+                <md-radio-button ng-value="male"> male</md-radio-button>
+                <md-radio-button ng-value="female"> female</md-radio-button>
+                <md-radio-button ng-value="other" checked> other</md-radio-button>
+            </md-radio-group>
+            <md-input type="submit" value="Submit" class="md-raised md-primary" ng-click="editProfile(editData)">
+        </div>
+    </md-content>
+</form>

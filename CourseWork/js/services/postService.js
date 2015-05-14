@@ -3,8 +3,6 @@ app.factory('postService', function(){
 
     }
 
-
-
     return{
         getPosts:getPosts
     }

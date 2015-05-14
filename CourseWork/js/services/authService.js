@@ -26,10 +26,8 @@ app.factory('authService', function ($http, baseServiceUrl, $q) {
             });
         return deferred.promise;
     }
-    function logout(accessToken) {
+    function logout() {
         var deferred = $q.defer();
-        console.log(accessToken);
-        $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
         $http.post(baseServiceUrl +  'users/logout')
             .success(function (data, status, headers, config) {
                 deferred.resolve(data, status, headers, config);

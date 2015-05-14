@@ -6,8 +6,8 @@
                      class="md-avatar"/>
 
                 <div class="md-list-item-text">
-                    <h3>Julian</h3>
-                    <h4>Juli go subri pichkata iska da izlezne navanka</h4>
+                    <h3>Pesho</h3>
+                    <h4>Pesho go subri pichkata iska da izlezne navanka</h4>
 
                     <p>{{ item.notes }}</p>
                 </div>
@@ -15,4 +15,7 @@
             <md-divider></md-divider>
         </md-list>
     </md-content>
+    <div ng-controller="UserController">
+        <md-button class="md-raised md-primary" ng-click="getOwnFriends()">Get friends</md-button>
+    </div>
 </div>

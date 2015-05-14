@@ -4,19 +4,24 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     <link rel="stylesheet" href="css/materialdesignicons.css"/>
     <link rel="stylesheet" href="css/styles.css"/>
-    <meta name="viewport" content="initial-scale=1" />
+    <meta name="viewport" content="initial-scale=1"/>
 </head>
 <body layout="column" ng-controller="AppController">
-<header ng-controller="AuthController" >
+<header ng-controller="AuthController">
     <md-content>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>
-                    <span>Grumpy wizards</span>
+                <div ng-if="authService.isLoggedIn()">
+                    <h2>
+                        <span>Grumpy wizards</span>
+                        <a href="#/me"> {{username}}</a>
+                </div>
                 </h2>
                 <span flex></span>
-                <h2><span>Hello, Daniel</span></h2>
-                <md-button ng-if="authService.isLoggedIn()" class="md-raised md-primary" ng-click="logout(accessToken)">Logout</md-button>
+                <div layout="row" ng-if="authService.isLoggedIn()">
+                    <md-button class="md-raised md-primary" href="#/me/edit">Edit</md-button>
+                    <md-button class="md-raised md-primary" ng-click="logout()">Logout</md-button>
+                </div>
             </div>
         </md-toolbar>
     </md-content>
@@ -38,5 +43,9 @@
 <script src="js/controllers/appController.js"></script>
 <script src="js/controllers/authController.js"></script>
 <script src="js/services/authService.js"></script>
+<script src="js/controllers/editProfileController.js"></script>
+<script src="js/services/userService.js"></script>
+<script src="js/controllers/uploadController.js"></script>
+<script src="js/controllers/userController.js"></script>
 </body>
 </html>

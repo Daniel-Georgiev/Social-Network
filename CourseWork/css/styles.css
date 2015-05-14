@@ -19,3 +19,11 @@ md-toolbar{
 #registerButton{
     background-color:#00b8d4;
 }
+#uploadProfileImg{
+    width: 160px;
+    height: 160px;
+}
+#uploadCoverImg{
+    width: 300px;
+    height: 100px;
+}

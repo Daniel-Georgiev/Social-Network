@@ -1,0 +1,17 @@
+<md-content>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <div ng-if="authService.isLoggedIn()">
+                <h2>
+                    <span>Grumpy wizards</span>
+                    <a href="#/me"> {{username}}</a>
+            </div>
+            </h2>
+            <span flex></span>
+            <div layout="row" ng-if="authService.isLoggedIn()">
+                <md-button class="md-raised md-primary" href="#/me/edit">Edit</md-button>
+                <md-button class="md-raised md-primary" ng-click="logout(accessToken)">Logout</md-button>
+            </div>
+        </div>
+    </md-toolbar>
+</md-content>
