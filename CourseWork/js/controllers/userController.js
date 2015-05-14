@@ -6,9 +6,6 @@ app.controller('UserController', function UserController($scope, userServices) {
         })
 
 
-    userServices.getNewsFeed()
-        .then(function(data){
-            $scope.newsFeed = data;
-        })
+
 
 });

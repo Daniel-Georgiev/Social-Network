@@ -12,10 +12,14 @@ app.config(function ($routeProvider) {
     });
     $routeProvider.when('/home', {
         templateUrl: 'templates/homeView.html',
-        controller: 'UserController'
+        controller: 'PostsController'
     });
     $routeProvider.when('/me', {
         templateUrl: 'templates/ownWallView.html',
+        controller: 'UserController'
+    })
+    $routeProvider.when('/users/:username',{
+        templateUrl: 'templates/friendsWallView.html',
         controller: 'UserController'
     })
     $routeProvider.otherwise(

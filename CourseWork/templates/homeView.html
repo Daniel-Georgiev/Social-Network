@@ -6,12 +6,16 @@
                      class="md-avatar"/>
 
                 <div class="md-list-item-text">
-                    <h3>{{post.author.name}}</h3>
+                    <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
                     <h4>{{post.postContent}}</h4>
                     <p>{{post.date | date}}</p>
+                    <div class="comments" ng-repeat="comment in post.comments">
+                        <a href="">{{comment.authorUsername}}</a>
+                        <p>{{comment.commentContent}}</p>
+                    </div>
                 </div>
+                <md-divider></md-divider>
             </md-list-item>
-            <md-divider></md-divider>
         </md-list>
     </md-content>
 </div>

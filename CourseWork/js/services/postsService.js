@@ -1,31 +1,8 @@
-app.factory('userServices', function($http, baseServiceUrl, $q){
-    function editProfile(editData){
-        $http.put(baseServiceUrl + 'me', editData)
-            .success(function (data, status, headers, config) {
-                console.log(data);
-            })
-            .error(function (data, status, headers, config) {
-            });
-    }
+app.factory('postServices', function($http, baseServiceUrl, $q) {
 
-    function editPassword(editData){
-        //todo
-    }
-    function getOwnData(){
+    function getNewsFeed(){
         var deferred = $q.defer();
-        $http.get(baseServiceUrl + 'me')
-            .success(function (data, status, headers, config) {
-                deferred.resolve(data);
-            })
-            .error(function (data, status, headers, config) {
-                deferred.reject(data);
-            });
-        return deferred.promise;
-    }
-
-    function getFriendRequests(){
-        var deferred = $q.defer();
-        $http.get(baseServiceUrl+ 'me/requests')
+        $http.get(baseServiceUrl+ 'me/feed?StartPostId&PageSize=7')
             .success(function (data, status, headers, config) {
                 deferred.resolve(data);
             })
@@ -36,9 +13,8 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
         return deferred.promise;
     }
 
-    function getOwnFriends(){
-        var deferred = $q.defer();
-        $http.get(baseServiceUrl+ 'me/friends')
+    function postComment(id, data){
+        $http.get(baseServiceUrl+ 'posts/' + id +'/comments', data)
             .success(function (data, status, headers, config) {
                 deferred.resolve(data);
             })
@@ -49,15 +25,22 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
         return deferred.promise;
     }
 
+    function getPostComments(id){
+        var deferred = $q.defer();
+        $http.get(baseServiceUrl+ '/posts/'+ id+ '/comments')
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
 
+        return deferred.promise;
+    }
 
     return{
-        getOwnFriends: getOwnFriends,
-        editProfile: editProfile,
-        editPassword: editPassword,
-        getOwnData: getOwnData,
-        getFriendRequests: getFriendRequests
-
+        getNewsFeed: getNewsFeed,
+        postComment: postComment,
+        getPostComments: getNewsFeed
     }
-
 })
