@@ -1,4 +1,4 @@
-app.controller('UploadCtrl', ['$scope', function ($scope) {
+app.controller('UploadCtrl', ['$scope',  function UploadCtrl($scope) {
     $scope.image = "";
 }])
 app.directive('myUpload', [function () {

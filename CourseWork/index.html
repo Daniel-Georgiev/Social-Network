@@ -2,8 +2,8 @@
 <head>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.0/angular-material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
-    <link rel="stylesheet" href="css/materialdesignicons.css"/>
     <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/demo.css"/>
     <meta name="viewport" content="initial-scale=1"/>
 </head>
 <body layout="column" ng-controller="AppController">
@@ -11,15 +11,16 @@
     <md-content>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <div ng-if="authService.isLoggedIn()">
-                    <h2>
-                        <span>Grumpy wizards</span>
-                        <a href="#/me"> {{username}}</a>
-                </div>
-                </h2>
-                <span flex></span>
                 <div layout="row" ng-if="authService.isLoggedIn()">
-                    <md-button class="md-raised md-primary" href="#/me/edit">Edit</md-button>
+                        <a href="#/me"> {{username}}</a>
+                        <md-button class="md-raised md-primary tools" href="#/home"><i class="icon icon-bubbles"></i></md-button>
+                        <md-button class="md-raised md-primary tools" href="#/me/friendRequests"><i class="icon icon-users"></i></md-button>
+                        <md-button class="md-raised md-primary tools" href="#/me/edit"><i class="icon icon-pencil2"></i></md-button>
+                        <md-button class="md-raised md-primary tools" href="#/me/edit"><i class="icon icon-key"></i></md-button>
+                </div>
+                <span flex></span>
+
+                <div layout="row" ng-if="authService.isLoggedIn()">
                     <md-button class="md-raised md-primary" ng-click="logout()">Logout</md-button>
                 </div>
             </div>

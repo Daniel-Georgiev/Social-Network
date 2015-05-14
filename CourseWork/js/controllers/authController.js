@@ -1,4 +1,4 @@
-app.controller('AuthController', function($scope, $location, authService, $http){
+app.controller('AuthController', function AuthController($scope, $location, authService, $http){
     $scope.authService = authService;
     if(sessionStorage['currentUser'] != undefined) {
         $scope.accessToken = authService.getCurrentUser().access_token
@@ -9,7 +9,6 @@ app.controller('AuthController', function($scope, $location, authService, $http)
     $scope.login = function (userData) {
         authService.login(userData)
             .then(function(){
-                $http.defaults.headers.common.Authorization = 'Bearer ' + authService.getCurrentUser().access_token;
                 $location.path('/home')
             })
         console.log(userData)

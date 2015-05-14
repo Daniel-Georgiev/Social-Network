@@ -8,16 +8,21 @@ app.config(function ($routeProvider) {
     });
     $routeProvider.when('/me/edit', {
         templateUrl: 'templates/editProfileView.html',
-        controller: 'EditProfileController'
-    })
-    $routeProvider.when('/home', {
-        templateUrl: 'templates/homeView.html',
         controller: 'AppController'
     });
+    $routeProvider.when('/home', {
+        templateUrl: 'templates/homeView.html',
+        controller: 'UserController'
+    });
+    $routeProvider.when('/me', {
+        templateUrl: 'templates/ownWallView.html',
+        controller: 'UserController'
+    })
     $routeProvider.otherwise(
         {redirectTo: '/login'}
     );
-})
+
+});
 
 //app.run(function ($rootScope, $location, authService) {
 //    $location.path('/login');
