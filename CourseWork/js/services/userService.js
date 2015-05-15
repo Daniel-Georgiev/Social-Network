@@ -56,7 +56,7 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
         editProfile: editProfile,
         editPassword: editPassword,
         getOwnData: getOwnData,
-        getFriendRequests: getFriendRequests
+        getFriendRequests: getFriendRequests,
 
     }
 

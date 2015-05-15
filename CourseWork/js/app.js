@@ -12,23 +12,30 @@ app.config(function ($routeProvider) {
     });
     $routeProvider.when('/home', {
         templateUrl: 'templates/homeView.html',
-        controller: 'PostsController'
+        controller: 'AppController'
     });
     $routeProvider.when('/me', {
         templateUrl: 'templates/ownWallView.html',
-        controller: 'UserController'
-    })
+        controller: 'AppController'
+    });
     $routeProvider.when('/users/:username',{
         templateUrl: 'templates/friendsWallView.html',
         controller: 'UserController'
-    })
+    });
+    $routeProvider.when('/me/friends',{
+        templateUrl: 'templates/friends.html',
+        controller: 'AppController'
+    });
     $routeProvider.otherwise(
         {redirectTo: '/login'}
     );
 
 });
 
-//app.run(function ($rootScope, $location, authService) {
-//    $location.path('/login');
-//
-//})
+app.run(function ($rootScope, $location, authService) {
+    $rootScope.$on('$locationChangeStart', function (event) {
+        if ($location.path().indexOf("/home") != -1 && !authService.isLoggedIn()) {
+            $location.path('/login');
+        }
+    })
+})

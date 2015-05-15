@@ -1,0 +1,14 @@
+<div ng-controller="UserController">
+    <div id="allFriends">
+        <md-input-container style="width:40%">
+            <label>Search</label>
+            <input ng-model="search">
+        </md-input-container>
+        <div ng-repeat="friend in ownFriends | filter:search" class="singleFriend">
+            <a href="#/users/{{friend.username}}">
+                <img ng-src="data:image/jpeg;base64,{{friend.profileImageData}}" class="friendProfilePic"/>
+                <span>{{friend.name}}</span>
+            </a>
+        </div>
+    </div>
+</div>

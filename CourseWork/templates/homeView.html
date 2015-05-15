@@ -1,21 +1,28 @@
-<div layout="row" layout-sm="column">
+<div layout="row" layout-sm="column" ng-controller="PostsController">
     <md-content flex="50" offset="5">
         <md-list>
-            <md-list-item class="md-3-line" ng-repeat="post in newsFeed">
-                <img ng-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeUezxSlM0LpPfr0VC6VEjddpsk1I2puumBsRUIUQst4DXwBE1pQ"
-                     class="md-avatar"/>
+            <md-content>
+                <md-input-container  id="newPost">
+                    <input ng-model="postData" placeholder="What's on your mind?">
+                </md-input-container>
+                <md-button class="md-raised md-primary" ng-click="addNewPost(postData)" id="addPostButton">Post</md-button>
+                <md-list-item class="md-3-line" ng-repeat="post in newsFeed">
+                    <img ng-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeUezxSlM0LpPfr0VC6VEjddpsk1I2puumBsRUIUQst4DXwBE1pQ"
+                         class="md-avatar"/>
+                    <div class="md-list-item-text">
+                        <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
+                        <h4>{{post.postContent}}</h4>
 
-                <div class="md-list-item-text">
-                    <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
-                    <h4>{{post.postContent}}</h4>
-                    <p>{{post.date | date}}</p>
-                    <div class="comments" ng-repeat="comment in post.comments">
-                        <a href="">{{comment.authorUsername}}</a>
-                        <p>{{comment.commentContent}}</p>
+                        <p>{{post.date | date}}</p>
+
+                        <div class="comments" ng-repeat="comment in post.comments">
+                            <a href="">{{comment.authorUsername}}</a>
+
+                            <p>{{comment.commentContent}}</p>
+                        </div>
                     </div>
-                </div>
-                <md-divider></md-divider>
-            </md-list-item>
+                    <md-divider></md-divider>
+                </md-list-item>
         </md-list>
     </md-content>
 </div>

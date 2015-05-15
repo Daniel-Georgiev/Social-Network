@@ -18,6 +18,10 @@ app.controller('AuthController', function AuthController($scope, $location, auth
         console.log(userData);
     };
     $scope.logout = function(){
-        authService.logout();
+        authService.logout()
+            .then(function(){
+                delete  $http.defaults.headers.common.Authorization;
+                $location.path('/login')
+            })
     }
 });

@@ -7,4 +7,10 @@ app.controller('PostsController', function UserController($scope, postServices) 
         .then(function(data){
             $scope.comments = data;
         })
+    $scope.addNewPost = function(data){
+        postServices.addNewPost(data)
+            .then(function(data){
+                console.log('Post added' + data)
+            })
+    }
 })
