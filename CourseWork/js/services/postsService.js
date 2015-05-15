@@ -56,10 +56,24 @@ app.factory('postServices', function($http, baseServiceUrl, $q, authService) {
         return deferred.promise;
     }
 
+    function getWall(username){
+        var deferred = $q.defer();
+        $http.get(baseServiceUrl+ 'users/'+ username +'/wall?StartPostId=&PageSize=5')
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
+    }
+
     return{
         getNewsFeed: getNewsFeed,
         postComment: postComment,
-        getPostComments: getNewsFeed,
-        addNewPost: addNewPost
+        getPostComments: getPostComments,
+        addNewPost: addNewPost,
+        getWall: getWall
     }
 })

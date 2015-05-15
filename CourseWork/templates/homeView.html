@@ -7,17 +7,14 @@
                 </md-input-container>
                 <md-button class="md-raised md-primary" ng-click="addNewPost(postData)" id="addPostButton">Post</md-button>
                 <md-list-item class="md-3-line" ng-repeat="post in newsFeed">
-                    <img ng-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeUezxSlM0LpPfr0VC6VEjddpsk1I2puumBsRUIUQst4DXwBE1pQ"
+                    <img ng-src="data:image/jpeg;base64,{{post.author.profileImageData}}"
                          class="md-avatar"/>
                     <div class="md-list-item-text">
                         <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
                         <h4>{{post.postContent}}</h4>
-
                         <p>{{post.date | date}}</p>
-
                         <div class="comments" ng-repeat="comment in post.comments">
                             <a href="">{{comment.authorUsername}}</a>
-
                             <p>{{comment.commentContent}}</p>
                         </div>
                     </div>

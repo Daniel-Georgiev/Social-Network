@@ -49,6 +49,19 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
         return deferred.promise;
     }
 
+    function getFriendFriends(username){
+        var deferred = $q.defer();
+        $http.get(baseServiceUrl+ 'users/'+ username +'/friends')
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
+    }
+
 
 
     return{
@@ -57,6 +70,7 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
         editPassword: editPassword,
         getOwnData: getOwnData,
         getFriendRequests: getFriendRequests,
+        getFriendFriends: getFriendFriends
 
     }
 

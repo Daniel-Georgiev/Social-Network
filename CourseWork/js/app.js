@@ -19,8 +19,8 @@ app.config(function ($routeProvider) {
         controller: 'AppController'
     });
     $routeProvider.when('/users/:username',{
-        templateUrl: 'templates/friendsWallView.html',
-        controller: 'UserController'
+        templateUrl: 'templates/WallView.html',
+        controller: 'AppController'
     });
     $routeProvider.when('/me/friends',{
         templateUrl: 'templates/friends.html',
