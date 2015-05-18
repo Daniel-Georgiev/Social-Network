@@ -19,6 +19,7 @@ app.factory('authService', function ($http, baseServiceUrl, $q) {
 
         $http.post(baseServiceUrl + 'users/register', userData)
             .success(function (data, status, headers, config) {
+                sessionStorage.currentUser = JSON.stringify(data)
                 deferred.resolve(data, status, headers, config)
             })
             .error(function (data, status, headers, config) {

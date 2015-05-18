@@ -1,4 +1,4 @@
-<div ng-controller="UserController">
+<div ng-controller="UserController" layout="row">
     <div id="allFriends">
         <md-input-container style="width:40%">
             <label>Search</label>
@@ -11,4 +11,15 @@
             </a>
         </div>
     </div>
+    <span flex></span>
+    <div id="friendRequests">
+        <div ng-repeat="friendRequest in friendRequests" class="singleFriend" >
+            <a href="#/users/{{friendRequest.user.username}}">
+            <img ng-src="data:image/jpeg;base64,{{friendRequest.user.profileImageData}}" class="friendProfilePic"/>
+            {{friendRequest.user.name}}</a>
+            <md-button class="md-raised md-primary" ng-click="acceptFriendRequest(friendRequest.id)">Accept</md-button>
+            <md-button class="md-raised md-warn" ng-click="declineFriendRequest(friendRequest.id)">Decline</md-button>
+        </div>
+    </div>
+
 </div>

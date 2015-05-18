@@ -35,6 +35,31 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
 
         return deferred.promise;
     }
+    function acceptFriendRequest(id){
+        var deferred = $q.defer();
+        $http.put(baseServiceUrl+ 'me/requests/'+ id +'?status=approved')
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
+    }
+
+    function declineFriendRequest(id){
+        var deferred = $q.defer();
+        $http.put(baseServiceUrl+ 'me/requests/'+ id +'?status=rejected')
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
+    }
 
     function getOwnFriends(){
         var deferred = $q.defer();
@@ -62,6 +87,19 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
         return deferred.promise;
     }
 
+    function getUserFullData(username){
+        var deferred = $q.defer();
+        $http.get(baseServiceUrl+ 'users/'+ username )
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
+    }
+
 
 
     return{
@@ -70,7 +108,11 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
         editPassword: editPassword,
         getOwnData: getOwnData,
         getFriendRequests: getFriendRequests,
-        getFriendFriends: getFriendFriends
+        acceptFriendRequest: acceptFriendRequest,
+        declineFriendRequest: declineFriendRequest,
+        getFriendFriends: getFriendFriends,
+        getUserFullData: getUserFullData
+
 
     }
 

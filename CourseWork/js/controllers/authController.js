@@ -10,12 +10,17 @@ app.controller('AuthController', function AuthController($scope, $location, auth
         authService.login(userData)
             .then(function(){
                 $location.path('/home')
+                console.log(userData)
             })
-        console.log(userData)
+
     };
     $scope.register = function(userData){
-        authService.register(userData);
-        console.log(userData);
+        authService.register(userData)
+            .then(function(){
+                $location.path('/home')
+                console.log(userData);
+            })
+
     };
     $scope.logout = function(){
         authService.logout()

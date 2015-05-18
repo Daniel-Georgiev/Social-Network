@@ -1,4 +1,4 @@
-app.controller('PostsController', function UserController($scope, postServices, $location) {
+app.controller('FeedController', function UserController($scope, postServices, $location) {
     postServices.getNewsFeed()
         .then(function(data){
             $scope.newsFeed = data;
@@ -16,11 +16,4 @@ app.controller('PostsController', function UserController($scope, postServices, 
             })
     };
 
-    var username = $location.path().split('/users/')[1];
-    postServices.getWall(username)
-        .then(function(data){
-            $scope.friendsWall = data;
-            console.log(data);
-        })
-    //TODO: figure out a way to fix the error
-});
+})
