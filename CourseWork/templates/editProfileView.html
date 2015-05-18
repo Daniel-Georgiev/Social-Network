@@ -16,11 +16,14 @@
                 <input my-upload type="file" name="upload">
             </div>
             <p>Selected Value: <span class="radioValue">{{ editData.gender}}</span></p>
+
+            <form action="">
             <md-radio-group ng-model="editData.gender">
-                <md-radio-button ng-value="male"> male</md-radio-button>
-                <md-radio-button ng-value="female"> female</md-radio-button>
-                <md-radio-button ng-value="other" checked> other</md-radio-button>
+                <md-radio-button ng-value="male" > male</md-radio-button>
+                <md-radio-button ng-value="female" > female</md-radio-button>
+                <md-radio-button ng-value="other"  > other</md-radio-button>
             </md-radio-group>
+            </form>
             <md-input type="submit" value="Submit" class="md-raised md-primary" ng-click="editProfile(editData)">
         </div>
     </md-content>

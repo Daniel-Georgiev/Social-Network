@@ -1,9 +1,9 @@
 <div ng-controller="UserController">
     <div id="userProfileData">
         <md-content>
-            <md-card  back-img="{{userFullData.coverImageData}}">
+            <md-card>
                 <!--<img ng-src="data:image/jpeg;base64,{{userFullData.coverImageData}}"/>-->
-                <div>
+                <div style="background: url('data:image/jpeg;base64,{{userFullData.coverImageData}}') no-repeat center" id="coverImage">
                     <img ng-src="data:image/jpeg;base64,{{userFullData.profileImageData}}" class="md-card-image">
                 </div>
             </md-card>
