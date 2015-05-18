@@ -94,3 +94,7 @@ a{
     background-size: cover!important;
     height: 220px;
 }
+#coverImage>h1{
+    display: inline;
+    color: #ffffff;
+}

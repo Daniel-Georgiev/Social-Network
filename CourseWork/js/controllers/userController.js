@@ -26,18 +26,18 @@ app.controller('UserController', function UserController($scope, userServices, $
 
 
     var username = $location.path().split('/users/')[1];
-    userServices.getFriendFriends(username)
-        .then(function(data){
-            $scope.friendFriends = data;
-        })
+    if(username != undefined) {
+        userServices.getFriendFriends(username)
+            .then(function (data) {
+                $scope.friendFriends = data;
+            })
 
-    userServices.getUserFullData(username)
-        .then(function(data){
-            $scope.userFullData = data;
-        })
-    //TODO: figure out a way to fix the error
+        userServices.getUserFullData(username)
+            .then(function (data) {
+                $scope.userFullData = data;
+            })
 
-
+    }
 
 
 });

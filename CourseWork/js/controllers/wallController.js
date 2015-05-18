@@ -1,14 +1,4 @@
-app.controller('WallController', function UserController($scope, postServices, $location) {
-
-    app.directive('backImg', function () {
-        return function (scope, element, attrs) {
-            var url = 'data:image/jpeg;base64,'+ attrs.backImg;
-            element.css({
-                'background-image': 'url(' + url + ')',
-                'background-size': 'cover'
-            });
-        };
-    });
+app.controller('WallController', function WallController($scope, postServices, $location) {
 
     var username = $location.path().split('/users/')[1];
     postServices.getWall(username)

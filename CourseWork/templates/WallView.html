@@ -1,15 +1,16 @@
 <div ng-controller="UserController">
-    <div id="userProfileData">
+    <div id="userProfileData" >
         <md-content>
             <md-card>
                 <!--<img ng-src="data:image/jpeg;base64,{{userFullData.coverImageData}}"/>-->
                 <div style="background: url('data:image/jpeg;base64,{{userFullData.coverImageData}}') no-repeat center" id="coverImage">
                     <img ng-src="data:image/jpeg;base64,{{userFullData.profileImageData}}" class="md-card-image">
+                    <h1>{{userFullData.name}}</h1>
                 </div>
             </md-card>
     </div>
     <div ng-controller="WallController">
-    <md-content flex="50" offset="5">
+    <md-content flex="50" offset="5" ng-controller="PostsController">
         <md-list>
             <md-list-item class="md-3-line" ng-repeat="post in friendsWall">
                 <img ng-src="data:image/jpeg;base64,{{post.author.profileImageData}}"
