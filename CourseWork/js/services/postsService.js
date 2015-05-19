@@ -14,7 +14,8 @@ app.factory('postServices', function($http, baseServiceUrl, $q, authService) {
     }
 
     function postComment(id, data){
-        $http.get(baseServiceUrl+ 'posts/' + id +'/comments', data)
+        var deferred = $q.defer();
+        $http.post(baseServiceUrl+ 'posts/' + id +'/comments', data)
             .success(function (data, status, headers, config) {
                 deferred.resolve(data);
             })
