@@ -13,15 +13,15 @@ app.config(function ($routeProvider,cfpLoadingBarProvider) {
     });
     $routeProvider.when('/home', {
         templateUrl: 'templates/feedView.html',
-        controller: 'AppController',
-        resolve: {
-            asd: function(postServices){
-                postServices.getNewsFeed()
-                    .then(function (data) {
-                        return data;
-                    })
-            }
-        }
+        controller: 'FeedController',
+        //resolve: {
+        //    news: function(postServices){
+        //        postServices.getNewsFeed()
+        //            .then(function (data) {
+        //                return data;
+        //            })
+        //    }
+        //}
     });
     $routeProvider.when('/me', {
         templateUrl: 'templates/ownWallView.html',

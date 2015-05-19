@@ -1,4 +1,4 @@
-<html lang="en" ng-app="App">
+<html lang="en" ng-app="App" ng-controller="AppController">
 <head>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.0/angular-material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
@@ -7,28 +7,50 @@
     <link rel="stylesheet" href="css/loading-bar.css"/>
     <meta name="viewport" content="initial-scale=1"/>
 </head>
-<body layout="column" ng-controller="AppController">
+<body layout="column">
 <header ng-controller="AuthController">
-    <md-content>
-        <md-toolbar>
+    <md-content ng-if="authService.isLoggedIn()">
+        <md-toolbar ng-controller="SearchController">
             <div class="md-toolbar-tools">
-                <div layout="row" ng-if="authService.isLoggedIn()">
-
-                    <md-button class="md-raised md-primary tools" href="#/users/{{username}}"><i class="icon icon-user"></i></md-button>
-                    <md-button class="md-raised md-primary tools" href="#/home"><i class="icon icon-bubbles"></i></md-button>
-                        <md-button class="md-raised md-primary tools" href="#/me/friends"><i class="icon icon-users"></i></md-button>
-                        <md-button class="md-raised md-primary tools" href="#/me/edit"><i class="icon icon-pencil2"></i></md-button>
-                        <md-button class="md-raised md-primary tools" href="#/me/edit"><i class="icon icon-key"></i></md-button>
+                <div layout="row">
+                    <md-button class="md-raised md-primary tools" href="#/users/{{username}}"><i
+                            class="icon icon-user"></i></md-button>
+                    <md-button class="md-raised md-primary tools" href="#/home"><i class="icon icon-bubbles"></i>
+                    </md-button>
+                    <md-button class="md-raised md-primary tools" href="#/me/friends"><i class="icon icon-users"></i>
+                    </md-button>
+                    <md-button class="md-raised md-primary tools" href="#/me/edit"><i class="icon icon-pencil2"></i>
+                    </md-button>
+                    <md-button class="md-raised md-primary tools" href="#/me/edit"><i class="icon icon-key"></i>
+                    </md-button>
                 </div>
                 <span flex></span>
+                <md-input-container id="searchBar">
+                    <input ng-model="searchTerm" placeholder="Search" ng-change="searchByName(searchTerm)">
+                </md-input-container>
 
-                <div layout="row" ng-if="authService.isLoggedIn()">
-                    <md-button class="md-raised md-primary" ng-click="logout()"><i class="icon icon-enter"></i></md-button>
+                <span id="resultList" ng-controller="SearchController">
+                    <md-list>
+                        <md-list-item ng-repeat="result in searchResults">
+                            <img ng-src="{{result.profileImageData}}" class="md-avatar"/>
+
+                            <div class="md-list-item-text">
+                                <h3><a href="#/users/{{result.username}}">{{result.name}}</a></h3>
+                            </div>
+                            <md-divider></md-divider>
+                        </md-list-item>
+                    </md-list>
+                </span>
+
+                <div layout="row">
+                    <md-button class="md-raised md-primary" ng-click="logout()"><i class="icon icon-enter"></i>
+                    </md-button>
                 </div>
             </div>
         </md-toolbar>
     </md-content>
 </header>
+
 <main ng-view>
 
 
@@ -55,6 +77,8 @@
 <script src="js/controllers/feedController.js"></script>
 <script src="js/controllers/wallController.js"></script>
 <script src="js/controllers/postsController.js"></script>
+<script src="js/services/searchService.js"></script>
+<script src="js/controllers/searchController.js"></script>
 
 
 </body>

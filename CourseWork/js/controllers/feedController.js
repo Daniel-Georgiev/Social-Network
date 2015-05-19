@@ -1,8 +1,9 @@
-app.controller('FeedController', function FeedController($scope, postServices, asd) {
-    //postServices.getNewsFeed()
-    //    .then(function(data){
-    //        $scope.newsFeed = data;
-    //    });
+app.controller('FeedController', function FeedController($scope, postServices) {
 
-    $scope.newsFeed = asd;
+    postServices.getNewsFeed()
+        .then(function(data){
+            $scope.newsFeed = data;
+        });
+
+    //$scope.newsFeed = news;
 });

@@ -4,10 +4,9 @@
             <md-content>
                 <md-card>
                     <!--<img ng-src="data:image/jpeg;base64,{{userFullData.coverImageData}}"/>-->
-                    <div style="background: url('data:image/jpeg;base64,{{userFullData.coverImageData}}') no-repeat center"
+                    <div style="background: url('{{userFullData.coverImageData}}') no-repeat center"
                          id="coverImage">
-                        <img ng-src="data:image/jpeg;base64,{{userFullData.profileImageData}}" class="md-card-image">
-
+                        <img ng-src="{{userFullData.profileImageData}}" class="md-card-image">
                         <h1>{{userFullData.name}}</h1>
                     </div>
                 </md-card>
@@ -17,7 +16,7 @@
         <md-content flex="50" offset="5" ng-controller="PostsController">
             <md-list>
                 <md-list-item class="md-3-line" ng-repeat="post in friendsWall">
-                    <img ng-src="data:image/jpeg;base64,{{post.author.profileImageData}}"
+                    <img ng-src="{{post.author.profileImageData}}"
                          class="md-avatar"/>
 
                     <div class="md-list-item-text">

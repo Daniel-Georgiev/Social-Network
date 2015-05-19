@@ -19,6 +19,28 @@ md-toolbar{
 .md-button{
     min-width: 60px;
 }
+#resultList{
+    position: absolute!important;
+    top: 3em;
+    left: 61.5%;
+    background: #ffffff;
+    border: 1px solid #26c6da;
+}
+#searchBar{
+    margin-top: 1.5em!important;
+}
+#resultList md-list{
+    float:left;
+}
+#userProfileData h1{
+    text-shadow: 0 0 3px rgba(0,0,0,.8);
+}
+header md-content{
+    display: inline;
+}
+#resultList h3{
+    text-shadow: 0 0 3px rgba(0,0,0,.8);
+}
 input.ng-valid.ng-dirty {
     border-color: #259b24;
 }

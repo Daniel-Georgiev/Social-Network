@@ -1,4 +1,4 @@
-<div layout="row" layout-sm="column" ng-controller="FeedController">
+<div layout="row" layout-sm="column">
     <md-content flex="50" offset="5" ng-controller="PostsController">
         <md-list>
                 <md-input-container  id="newPost">
@@ -6,19 +6,17 @@
                 </md-input-container>
                 <md-button class="md-raised md-primary" ng-click="addNewPost(postData)" id="addPostButton">Post</md-button>
                 <md-list-item class="md-3-line" ng-repeat="post in newsFeed">
-                    <img ng-src="data:image/jpeg;base64,{{post.author.profileImageData}}" class="md-avatar"/>
+                    <img ng-src="{{post.author.profileImageData}}" class="md-avatar"/>
                     <div class="md-list-item-text">
                         <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
                         <h4>{{post.postContent}}</h4>
                         <p>{{post.date | date}}</p>
                         <div class="comments" ng-repeat="comment in post.comments">
-                            <a href="">{{comment.authorUsername}}</a>
                             <p>{{comment.commentContent}}</p>
                         </div>
                         <md-input-container  class="newComment">
                         <input ng-model="newCommentContent" placeholder="Add your comment">
                             <md-button class="md-raised md-primary" ng-click="addCommentToPost(post.id , newCommentContent)" id="addPostButton">Comment</md-button>
-
                         </md-input-container>
                     </div>
                     <md-divider></md-divider>
