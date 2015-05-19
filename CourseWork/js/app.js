@@ -11,7 +11,7 @@ app.config(function ($routeProvider) {
         controller: 'AppController'
     });
     $routeProvider.when('/home', {
-        templateUrl: 'templates/homeView.html',
+        templateUrl: 'templates/feedView.html',
         controller: 'AppController'
     });
     $routeProvider.when('/me', {

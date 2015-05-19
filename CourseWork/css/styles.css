@@ -16,6 +16,9 @@ md-toolbar{
 .md-primary{
     background-color:   #00838f!important;
 }
+input.ng-valid.ng-dirty {
+    border-color: #259b24;
+}
 #registerButton{
     background-color:#00b8d4;
 }

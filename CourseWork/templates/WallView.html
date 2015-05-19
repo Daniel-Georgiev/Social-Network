@@ -1,34 +1,42 @@
 <div ng-controller="UserController">
-    <div id="userProfileData" >
-        <md-content>
-            <md-card>
-                <!--<img ng-src="data:image/jpeg;base64,{{userFullData.coverImageData}}"/>-->
-                <div style="background: url('data:image/jpeg;base64,{{userFullData.coverImageData}}') no-repeat center" id="coverImage">
-                    <img ng-src="data:image/jpeg;base64,{{userFullData.profileImageData}}" class="md-card-image">
-                    <h1>{{userFullData.name}}</h1>
-                </div>
-            </md-card>
-    </div>
     <div ng-controller="WallController">
-    <md-content flex="50" offset="5" ng-controller="PostsController">
-        <md-list>
-            <md-list-item class="md-3-line" ng-repeat="post in friendsWall">
-                <img ng-src="data:image/jpeg;base64,{{post.author.profileImageData}}"
-                     class="md-avatar"/>
-                <div class="md-list-item-text">
-                    <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
-                    <h4>{{post.postContent}}</h4>
-                    <p>{{post.date | date}}</p>
-                    <div class="comments" ng-repeat="comment in post.comments">
-                        <a href="">{{comment.authorUsername}}</a>
-                        <p>{{comment.commentContent}}</p>
+        <div id="userProfileData">
+            <md-content>
+                <md-card>
+                    <!--<img ng-src="data:image/jpeg;base64,{{userFullData.coverImageData}}"/>-->
+                    <div style="background: url('data:image/jpeg;base64,{{userFullData.coverImageData}}') no-repeat center"
+                         id="coverImage">
+                        <img ng-src="data:image/jpeg;base64,{{userFullData.profileImageData}}" class="md-card-image">
+
+                        <h1>{{userFullData.name}}</h1>
                     </div>
-                </div>
-                <md-divider></md-divider>
-            </md-list-item>
-        </md-list>
-    </md-content>
+                </md-card>
+            </md-content>
         </div>
+
+        <md-content flex="50" offset="5" ng-controller="PostsController">
+            <md-list>
+                <md-list-item class="md-3-line" ng-repeat="post in friendsWall">
+                    <img ng-src="data:image/jpeg;base64,{{post.author.profileImageData}}"
+                         class="md-avatar"/>
+
+                    <div class="md-list-item-text">
+                        <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
+                        <h4>{{post.postContent}}</h4>
+
+                        <p>{{post.date | date}}</p>
+
+                        <div class="comments" ng-repeat="comment in post.comments">
+                            <a href="">{{comment.authorUsername}}</a>
+
+                            <p>{{comment.commentContent}}</p>
+                        </div>
+                    </div>
+                    <md-divider></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
     <div id="friendsContainer">
         <div ng-repeat="friend in friendFriends" class="singleFriend">
             <a href="#/users/{{friend.username}}">
@@ -37,4 +45,5 @@
             </a>
         </div>
     </div>
+</div>
 </div>

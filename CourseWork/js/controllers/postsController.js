@@ -1,8 +1,5 @@
 app.controller('PostsController', function PostsController($scope, postServices) {
-    postServices.getPostComments(77)
-        .then(function(data){
-            $scope.comments = data;
-        });
+
 
     $scope.addNewPost = function(data){
         postServices.addNewPost(data)
@@ -11,4 +8,17 @@ app.controller('PostsController', function PostsController($scope, postServices)
             })
     };
 
-})
+    $scope.addCommentToPost = function(postId, data){
+        var postContent ={
+            'commentContent': data
+        };
+        postServices.postComment(postId, postContent)
+            .then(function(data){
+                //postServices.getPostComments(postId)
+                //    .then(function(data){
+                //        $scope.comments = data;
+                //    });
+            })
+    }
+
+});

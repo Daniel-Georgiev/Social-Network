@@ -12,7 +12,7 @@
         </div>
     </div>
     <span flex></span>
-    <div id="friendRequests" ng-if="friendRequests.length > 0">
+    <div id="friendRequests" ng-if="friendRequests.length > 0" layout="column">
         <div ng-repeat="friendRequest in friendRequests" class="singleFriend" >
             <a href="#/users/{{friendRequest.user.username}}">
             <img ng-src="data:image/jpeg;base64,{{friendRequest.user.profileImageData}}" class="friendProfilePic"/>
