@@ -16,9 +16,16 @@ md-toolbar{
 .md-primary{
     background-color:   #00838f!important;
 }
+.md-button{
+    min-width: 60px;
+}
 input.ng-valid.ng-dirty {
     border-color: #259b24;
 }
+button:disabled{
+    background-color: #00b8d4!important;
+}
+
 #registerButton{
     background-color:#00b8d4;
 }
@@ -71,11 +78,18 @@ a{
     text-underline: none;
 }
 #newPost{
-    margin-top: 1em;
+    margin-top: 2em;
+    display: inline-block;
+}
+.newComment{
+    margin-top: 0.2em;
     display: inline-block;
 }
 #newPost>input{
     width: 20em;
+}
+label{
+    margin-left: 0!important;
 }
 #friendRequests {
     box-shadow: 0 5px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);

@@ -2,8 +2,9 @@
 <head>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.0/angular-material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
-    <link rel="stylesheet" href="css/styles.css"/>
     <link rel="stylesheet" href="css/demo.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/loading-bar.css"/>
     <meta name="viewport" content="initial-scale=1"/>
 </head>
 <body layout="column" ng-controller="AppController">
@@ -12,8 +13,9 @@
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <div layout="row" ng-if="authService.isLoggedIn()">
-                        <a href="#/users/{{username}}"> {{username}}</a>
-                        <md-button class="md-raised md-primary tools" href="#/home"><i class="icon icon-bubbles"></i></md-button>
+
+                    <md-button class="md-raised md-primary tools" href="#/users/{{username}}"><i class="icon icon-user"></i></md-button>
+                    <md-button class="md-raised md-primary tools" href="#/home"><i class="icon icon-bubbles"></i></md-button>
                         <md-button class="md-raised md-primary tools" href="#/me/friends"><i class="icon icon-users"></i></md-button>
                         <md-button class="md-raised md-primary tools" href="#/me/edit"><i class="icon icon-pencil2"></i></md-button>
                         <md-button class="md-raised md-primary tools" href="#/me/edit"><i class="icon icon-key"></i></md-button>
@@ -39,6 +41,7 @@
 <script src="js/libs/angular-route.js"></script>
 <script src="js/libs/angular-resource.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.0/angular-material.min.js"></script>
+<script src="js/libs/loading-bar.js"></script>
 
 <script src="js/app.js"></script>
 <script src="js/controllers/appController.js"></script>

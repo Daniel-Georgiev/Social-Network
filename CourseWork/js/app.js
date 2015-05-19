@@ -1,7 +1,8 @@
-var app = angular.module('App', ['ngMaterial', 'ngRoute', 'ngResource']);
+var app = angular.module('App', ['ngMaterial', 'ngRoute', 'ngResource', 'angular-loading-bar']);
 app.constant('baseServiceUrl', 'http://softuni-social-network.azurewebsites.net/api/');
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider,cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeBar = false;
     $routeProvider.when('/login', {
         templateUrl: 'templates/publicView.html',
         controller: 'AuthController'
@@ -12,7 +13,15 @@ app.config(function ($routeProvider) {
     });
     $routeProvider.when('/home', {
         templateUrl: 'templates/feedView.html',
-        controller: 'AppController'
+        controller: 'AppController',
+        resolve: {
+            asd: function(postServices){
+                postServices.getNewsFeed()
+                    .then(function (data) {
+                        return data;
+                    })
+            }
+        }
     });
     $routeProvider.when('/me', {
         templateUrl: 'templates/ownWallView.html',

@@ -1,6 +1,6 @@
 
 <div layout="row" layout-sm="column">
-    <form name="registerForm">
+    <form name="formRegister" novalidate>
     <md-content layout-padding layout="column" layout-sm="column">
         <div layout="column" layout-sm="column">
             <md-input-container flex>
@@ -23,13 +23,13 @@
                 <label>Email</label>
                 <input ng-model="registerData.email" type="email" required>
             </md-input-container>
-            <md-button class="md-raised md-primary" ng-disabled="registerForm.$invalid" ng-click="register(registerData)">Register</md-button>
+            <md-button class="md-raised md-primary" ng-disabled="formRegister.$invalid" ng-click="register(registerData)">Register</md-button>
         </div>
     </md-content>
         </form>
     <span flex></span>
 
-    <form name="loginForm" novalidate>
+    <form name="formLogin" novalidate>
     <md-content layout-padding layout="column" layout-sm="column">
         <div layout="column" layout-sm="column">
             <md-input-container flex>
@@ -41,7 +41,7 @@
                 <input ng-model="userData.password" type="password" required>
             </md-input-container>
         </div>
-        <md-button class="md-raised md-primary" ng-disabled="loginForm.$invalid" ng-click="login(userData)">Login</md-button>
+        <md-button class="md-raised md-primary" ng-disabled="formLogin.$invalid" ng-click="login(userData)">Login</md-button>
     </md-content>
         </form>
 </div>

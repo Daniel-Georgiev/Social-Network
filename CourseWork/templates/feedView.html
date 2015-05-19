@@ -15,7 +15,7 @@
                             <a href="">{{comment.authorUsername}}</a>
                             <p>{{comment.commentContent}}</p>
                         </div>
-                        <md-input-container  id="newPost">
+                        <md-input-container  class="newComment">
                         <input ng-model="newCommentContent" placeholder="Add your comment">
                             <md-button class="md-raised md-primary" ng-click="addCommentToPost(post.id , newCommentContent)" id="addPostButton">Comment</md-button>
 
