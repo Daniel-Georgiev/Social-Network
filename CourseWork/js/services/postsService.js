@@ -1,17 +1,17 @@
 app.factory('postServices', function($http, baseServiceUrl, $q, authService) {
 
-    function getNewsFeed(){
-        var deferred = $q.defer();
-        $http.get(baseServiceUrl+ 'me/feed?StartPostId&PageSize=7')
-            .success(function (data, status, headers, config) {
-                deferred.resolve(data);
-            })
-            .error(function (data, status, headers, config) {
-                deferred.reject(data);
-            });
-
-        return deferred.promise;
-    }
+    //function getNewsFeed(){
+    //    var deferred = $q.defer();
+    //    $http.get(baseServiceUrl+ 'me/feed?StartPostId&PageSize=7')
+    //        .success(function (data, status, headers, config) {
+    //            deferred.resolve(data);
+    //        })
+    //        .error(function (data, status, headers, config) {
+    //            deferred.reject(data);
+    //        });
+    //
+    //    return deferred.promise;
+    //}
 
     function postComment(id, data){
         var deferred = $q.defer();
@@ -71,7 +71,7 @@ app.factory('postServices', function($http, baseServiceUrl, $q, authService) {
     }
 
     return{
-        getNewsFeed: getNewsFeed,
+        //getNewsFeed: getNewsFeed,
         postComment: postComment,
         getPostComments: getPostComments,
         addNewPost: addNewPost,

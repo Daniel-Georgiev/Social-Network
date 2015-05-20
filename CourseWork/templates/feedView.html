@@ -1,11 +1,11 @@
-<div layout="row" layout-sm="column">
+<div layout="row" layout-sm="column" ng-controller="ScrollController">
     <md-content flex="50" offset="5" ng-controller="PostsController">
-        <md-list>
+        <md-list infinite-scroll='socialNetwork.nextPage()'>
                 <md-input-container  id="newPost">
                     <input ng-model="postData" placeholder="What's on your mind?">
                 </md-input-container>
                 <md-button class="md-raised md-primary" ng-click="addNewPost(postData)" id="addPostButton">Post</md-button>
-                <md-list-item class="md-3-line" ng-repeat="post in newsFeed">
+                <md-list-item class="md-3-line" ng-repeat="post in socialNetwork.items">
                     <img ng-src="{{post.author.profileImageData}}" class="md-avatar"/>
                     <div class="md-list-item-text">
                         <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>

@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ngMaterial', 'ngRoute', 'ngResource', 'angular-loading-bar']);
+var app = angular.module('App', ['ngMaterial', 'ngRoute', 'ngResource', 'angular-loading-bar', 'infinite-scroll']);
 app.constant('baseServiceUrl', 'http://softuni-social-network.azurewebsites.net/api/');
 
 app.config(function ($routeProvider,cfpLoadingBarProvider) {
@@ -13,7 +13,7 @@ app.config(function ($routeProvider,cfpLoadingBarProvider) {
     });
     $routeProvider.when('/home', {
         templateUrl: 'templates/feedView.html',
-        controller: 'FeedController',
+        controller: 'FeedController'
         //resolve: {
         //    news: function(postServices){
         //        postServices.getNewsFeed()
