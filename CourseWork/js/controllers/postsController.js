@@ -2,8 +2,12 @@ app.controller('PostsController', function PostsController($scope, postServices,
 
     $scope.posts = new SocialNetworkPosts();
 
-    $scope.addNewPost = function(data){
-        postServices.addNewPost(data)
+    $scope.addNewPost = function(data, username){
+        var postContent = {
+            postContent: data,
+            username: username
+        }
+        postServices.addNewPost(postContent)
             .then(function(data){
                 console.log(data)
             })

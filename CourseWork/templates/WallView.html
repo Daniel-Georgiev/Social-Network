@@ -12,9 +12,12 @@
             </md-content>
         </div>
         <md-button class="md-raised md-primary" ng-click="sendFriendRequest(userFullData.username)" ng-if="userFullData.username != username && !isMyFriend">Add friend</md-button>
-
         <md-content flex="50" offset="5" ng-controller="PostsController">
             <md-list>
+                <md-input-container  id="newPost">
+                    <input ng-model="postData" placeholder="What's on your mind?">
+                </md-input-container>
+                <md-button class="md-raised md-primary" ng-click="addNewPost(postData, userFullData.username)" id="addPostButton">Post</md-button>
                 <md-list-item class="md-3-line" ng-repeat="post in friendsWall">
                     <img ng-src="{{post.author.profileImageData}}"
                          class="md-avatar"/>

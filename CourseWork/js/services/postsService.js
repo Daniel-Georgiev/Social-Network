@@ -39,13 +39,9 @@ app.factory('postServices', function($http, baseServiceUrl, $q, authService) {
         return deferred.promise;
     }
 
-    function addNewPost(data){
+    function addNewPost(postContent){
         var deferred = $q.defer();
 
-        var postContent = {
-            postContent: data,
-            username:  authService.getCurrentUser().userName
-        }
         $http.post(baseServiceUrl+ 'posts', postContent)
             .success(function (data, status, headers, config) {
                 deferred.resolve(data);
