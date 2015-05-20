@@ -1,5 +1,6 @@
-app.controller('PostsController', function PostsController($scope, postServices) {
+app.controller('PostsController', function PostsController($scope, postServices, SocialNetworkPosts) {
 
+    $scope.posts = new SocialNetworkPosts();
 
     $scope.addNewPost = function(data){
         postServices.addNewPost(data)

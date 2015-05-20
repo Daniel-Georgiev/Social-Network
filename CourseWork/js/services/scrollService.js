@@ -1,25 +1,27 @@
 // Reddit constructor function to encapsulate HTTP and pagination logic
-app.factory('SocialNetwork', function($http, baseServiceUrl, $q) {
-    var SocialNetwork = function() {
-        this.items = [];
+app.factory('SocialNetworkPosts', function($http, baseServiceUrl) {
+    var SocialNetworkPosts = function() {
+        this.posts = [];
         this.busy = false;
-        this.after = '';
+        this.lastIndex = '';
     };
 
-    SocialNetwork.prototype.nextPage = function() {
+    SocialNetworkPosts.prototype.nextPage = function() {
         if (this.busy) return;
         this.busy = true;
-        //var url = baseServiceUrl+ 'me/feed?StartPostId='+this.after+'&PageSize=7';
-        var url = baseServiceUrl+ 'me/feed?StartPostId=&PageSize=7';
+        var url = baseServiceUrl+ 'me/feed?StartPostId=' + this.lastIndex + '&PageSize=7';
 
         $http.get(url).success(function(data) {
-            this.items = data;
-            this.after = this.items[this.items.length-1].id;
-            //console.log(this.after)
+            console.log(data);
+            var posts = data;
+            for (var i = 0; i < posts.length; i++) {
+                this.posts.push(posts[i]);
+            }
+            this.lastIndex = this.posts[this.posts.length-1].id;
             this.busy = false;
         }.bind(this));
 
     };
 
-    return SocialNetwork;
+    return SocialNetworkPosts;
 });

@@ -11,8 +11,7 @@ app.controller('AuthController', function AuthController($scope, $location, auth
             .then(function(){
                 $location.path('/home')
             },function(error){
-                notifyService.showError()
-                console.log(error);
+                notifyService.showError(error.error_description);
             })
 
     };
@@ -21,6 +20,9 @@ app.controller('AuthController', function AuthController($scope, $location, auth
             .then(function(){
                 $location.path('/home')
                 console.log(userData);
+            },function(error){
+                console.log(error);
+                notifyService.showError(error.message)
             })
 
     };
