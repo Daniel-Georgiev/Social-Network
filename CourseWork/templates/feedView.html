@@ -1,6 +1,6 @@
 <div layout="row" layout-sm="column" ng-controller="ScrollController">
-    <md-content flex="50" offset="5" ng-controller="PostsController">
-        <md-list infinite-scroll='socialNetwork.nextPage()'>
+    <md-content flex="50" offset="5" ng-controller="FeedController">
+        <md-list infinite-scroll='socialNetwork.nextPage()' ng-controller="PostsController">
                 <md-input-container  id="newPost">
                     <input ng-model="postData" placeholder="What's on your mind?">
                 </md-input-container>

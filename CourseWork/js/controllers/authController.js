@@ -29,4 +29,9 @@ app.controller('AuthController', function AuthController($scope, $location, auth
                 $location.path('/login')
             })
     }
+
+    if(sessionStorage['currentUser'] != undefined){
+        $http.defaults.headers.common.Authorization = 'Bearer ' + authService.getCurrentUser().access_token;
+
+    }
 });

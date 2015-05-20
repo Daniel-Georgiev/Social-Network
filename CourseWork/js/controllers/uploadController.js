@@ -1,19 +1,32 @@
-app.controller('UploadCtrl', ['$scope',  function UploadCtrl($scope) {
-    $scope.image = "";
-}])
-app.directive('myUpload', [function () {
-    return {
-        restrict: 'A',
-        link: function (scope, elem, attrs) {
+app.controller('UploadCtrl', function UploadCtrl($scope) {
+    $scope.profilePicture = function(fileInputField) {
+        delete $scope.ownData.profileImageData;
+        var file = fileInputField.files[0];
+        if (file.type.match(/image\/.*/)) {
             var reader = new FileReader();
-            reader.onload = function (e) {
-                scope.image = e.target.result;
-                scope.$apply();
+            reader.onload = function() {
+                $scope.ownData.profileImageData = reader.result;
+                $(".profileImage").html("<img src='" + reader.result + "' id='uploadProfileImg'>");
             };
-
-            elem.on('change', function() {
-                reader.readAsDataURL(elem[0].files[0]);
-            });
+            reader.readAsDataURL(file);
+        } else {
+            $(".image-box").html("<p>File type not supported!</p>");
         }
     };
-}]);
+
+    $scope.coverPicture = function(fileInputField) {
+        delete $scope.ownData.coverImageData;
+        var file = fileInputField.files[0];
+        if (file.type.match(/image\/.*/)) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                $scope.ownData.coverImageData = reader.result;
+                $(".coverImage").html("<img src='" + reader.result + "' id='uploadCoverImg'>");
+            };
+            reader.readAsDataURL(file);
+        } else {
+            $(".image-box").html("<p>File type not supported!</p>");
+        }
+    };
+
+});

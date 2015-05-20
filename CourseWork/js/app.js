@@ -9,11 +9,11 @@ app.config(function ($routeProvider,cfpLoadingBarProvider) {
     });
     $routeProvider.when('/me/edit', {
         templateUrl: 'templates/editProfileView.html',
-        controller: 'AppController'
+        controller: 'UserController'
     });
     $routeProvider.when('/home', {
         templateUrl: 'templates/feedView.html',
-        controller: 'FeedController'
+        controller: 'AuthController'
         //resolve: {
         //    news: function(postServices){
         //        postServices.getNewsFeed()
