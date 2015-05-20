@@ -6,7 +6,7 @@
         </md-input-container>
         <div ng-repeat="friend in ownFriends | filter:search" class="singleFriend">
             <a href="#/users/{{friend.username}}">
-                <img ng-src="data:image/jpeg;base64,{{friend.profileImageData}}" class="friendProfilePic"/>
+                <img ng-src="{{friend.profileImageData}}" class="friendProfilePic"/>
                 <span>{{friend.name}}</span>
             </a>
         </div>
@@ -15,7 +15,7 @@
     <div id="friendRequests" ng-if="friendRequests.length > 0" layout="column">
         <div ng-repeat="friendRequest in friendRequests" class="singleFriend" >
             <a href="#/users/{{friendRequest.user.username}}">
-            <img ng-src="data:image/jpeg;base64,{{friendRequest.user.profileImageData}}" class="friendProfilePic"/>
+            <img ng-src="{{friendRequest.user.profileImageData}}" class="friendProfilePic"/>
             {{friendRequest.user.name}}</a>
             <md-button class="md-raised md-primary" ng-click="acceptFriendRequest(friendRequest.id)">Accept</md-button>
             <md-button class="md-raised md-warn" ng-click="declineFriendRequest(friendRequest.id)">Decline</md-button>

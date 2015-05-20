@@ -23,6 +23,19 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
         return deferred.promise;
     }
 
+    function sendFriendRequest(name){
+        var deferred = $q.defer();
+        $http.post(baseServiceUrl+ 'me/requests/' + name )
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
+    }
+
     function getFriendRequests(){
         var deferred = $q.defer();
         $http.get(baseServiceUrl+ 'me/requests')
@@ -107,6 +120,7 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
         editProfile: editProfile,
         editPassword: editPassword,
         getOwnData: getOwnData,
+        sendFriendRequest: sendFriendRequest,
         getFriendRequests: getFriendRequests,
         acceptFriendRequest: acceptFriendRequest,
         declineFriendRequest: declineFriendRequest,

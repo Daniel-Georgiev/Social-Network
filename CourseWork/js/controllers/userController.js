@@ -4,7 +4,12 @@ app.controller('UserController', function UserController($scope, userServices, $
             $scope.ownFriends = data;
 
         })
-
+    $scope.sendFriendRequest = function(name){
+        userServices.sendFriendRequest(name)
+            .then(function(data){
+                console.log(data);
+            })
+    }
     userServices.getFriendRequests()
         .then(function(data){
         $scope.friendRequests = data;
