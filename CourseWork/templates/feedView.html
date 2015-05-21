@@ -9,16 +9,17 @@
                     <img ng-src="{{post.author.profileImageData}}" class="md-avatar"/>
                     <div class="md-list-item-text">
                         <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
+                        <p class="writtenOn">{{post.date | date}}</p>
                         <span>wrote on <a href="#/users/{{post.wallOwner.username}}">{{post.wallOwner.name}}</a>'s wall</span>
                         <h4>{{post.postContent}}</h4>
-                        <p>{{post.date | date}}</p>
+                        <p><i class="icon icon-heart"></i></p>
+
                         <div class="comments" ng-repeat="comment in post.comments">
                             <span><a href="#/users/{{comment.author.username}}">{{comment.author.name}}</a></span>
                             <p>{{comment.commentContent}}</p>
                         </div>
                         <md-input-container  class="newComment">
-                        <input ng-model="newCommentContent" placeholder="Add your comment">
-                            <md-button class="md-raised md-primary" ng-click="addCommentToPost(post.id , newCommentContent)" id="addPostButton">Comment</md-button>
+                        <input ng-model="newCommentContent" ng-enter="addCommentToPost(post.id , newCommentContent)" placeholder="Write a comment">
                         </md-input-container>
                     </div>
                     <md-divider></md-divider>

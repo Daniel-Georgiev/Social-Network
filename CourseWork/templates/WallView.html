@@ -32,6 +32,9 @@
 
                             <p>{{comment.commentContent}}</p>
                         </div>
+                        <md-input-container  class="newComment">
+                            <input ng-model="newCommentContent" ng-enter="addCommentToPost(post.id , newCommentContent)" placeholder="Write a comment">
+                        </md-input-container>
                     </div>
                     <md-divider></md-divider>
                 </md-list-item>

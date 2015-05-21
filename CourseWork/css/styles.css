@@ -103,6 +103,9 @@ a{
     margin-top: 2em;
     display: inline-block;
 }
+.writtenOn{
+    font-size: 10px!important;
+}
 .newComment{
     margin-top: 0.2em;
     display: inline-block;
