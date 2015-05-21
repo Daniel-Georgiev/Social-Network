@@ -1,15 +1,13 @@
-app.controller('WallController', function WallController($scope, postServices, $location) {
+app.controller('WallController', function WallController($scope, postServices, $location, WallPosts) {
+
 
     $scope.isMyFriend = false;
 
     var username = $location.path().split('/users/')[1];
-    postServices.getWall(username)
-        .then(function (data) {
-            $scope.friendsWall = data;
-            $scope.isMyFriend = true;
-        });
+    $scope.wallPosts = new WallPosts(username);
 
 
 
-    //TODO: figure out a way to fix the error
+
+//TODO: figure out a way to fix the error
 });

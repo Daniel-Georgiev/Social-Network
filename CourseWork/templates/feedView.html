@@ -1,22 +1,25 @@
 <div layout="row" layout-sm="column" ng-controller="PostsController">
     <md-content flex="50" offset="5" ng-controller="FeedController">
-        <md-list infinite-scroll='posts.nextPage()' infinite-scroll-disabled='posts.busy' infinite-scroll-distance='0.050'>
+        <md-list infinite-scroll='feedPosts.nextPage()' infinite-scroll-disabled='posts.busy' infinite-scroll-distance='0.5'>
                 <md-input-container  id="newPost">
                     <input ng-model="postData" placeholder="What's on your mind?">
                 </md-input-container>
                 <md-button class="md-raised md-primary" ng-click="addNewPost(postData, username)" id="addPostButton">Post</md-button>
-                <md-list-item class="md-3-line" ng-repeat="post in posts.socialNetWorkPosts">
+                <md-list-item class="md-3-line" ng-repeat="post in feedPosts.feedPosts">
                     <img ng-src="{{post.author.profileImageData}}" class="md-avatar"/>
                     <div class="md-list-item-text">
                         <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
-                        <p class="writtenOn">{{post.date | date}}</p>
+                        <p class="writtenOn">{{post.date | date:'medium'}}</p>
                         <span>wrote on <a href="#/users/{{post.wallOwner.username}}">{{post.wallOwner.name}}</a>'s wall</span>
                         <h4>{{post.postContent}}</h4>
-                        <p><i class="icon icon-heart"></i></p>
-
-                        <div class="comments" ng-repeat="comment in post.comments">
+                        <p><i class="icon icon-heart likePost" ng-if="!post.liked" ng-click="likePost(post.id)" title="Like"></i>
+                            <i class="icon icon-heart-broken likePost" ng-if="post.liked" ng-click="dislikePost(post.id)" title="Dislike"></i>
+                            {{post.likesCount}}</p>
+                        <div class="comments">
+                        <div ng-repeat="comment in post.comments">
                             <span><a href="#/users/{{comment.author.username}}">{{comment.author.name}}</a></span>
                             <p>{{comment.commentContent}}</p>
+                        </div>
                         </div>
                         <md-input-container  class="newComment">
                         <input ng-model="newCommentContent" ng-enter="addCommentToPost(post.id , newCommentContent)" placeholder="Write a comment">
@@ -24,7 +27,7 @@
                     </div>
                     <md-divider></md-divider>
                 </md-list-item>
-            <div ng-show='posts.busy'>{{posts.loadingMessage}}</div>
+            <div ng-show='feedPosts.busy'>{{feedPosts.loadingMessage}}</div>
         </md-list>
     </md-content>
 </div>

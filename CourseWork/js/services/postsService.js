@@ -26,6 +26,32 @@ app.factory('postServices', function($http, baseServiceUrl, $q, authService) {
         return deferred.promise;
     }
 
+    function likePost(id){
+        var deferred = $q.defer();
+        $http.post(baseServiceUrl+ 'posts/' + id +'/likes')
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
+    }
+
+    function dislikePost(id){
+        var deferred = $q.defer();
+        $http.delete(baseServiceUrl+ 'posts/' + id +'/likes')
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
+    }
+
     function getPostComments(id){
         var deferred = $q.defer();
         $http.get(baseServiceUrl+ '/posts/'+ id+ '/comments')
@@ -66,11 +92,14 @@ app.factory('postServices', function($http, baseServiceUrl, $q, authService) {
         return deferred.promise;
     }
 
+
+
     return{
-        //getNewsFeed: getNewsFeed,
         postComment: postComment,
         getPostComments: getPostComments,
+        likePost: likePost,
+        dislikePost: dislikePost,
         addNewPost: addNewPost,
         getWall: getWall
     }
-})
+});

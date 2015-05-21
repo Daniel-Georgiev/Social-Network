@@ -1,9 +1,4 @@
-app.controller('FeedController', function FeedController($scope, postServices) {
+app.controller('FeedController', function FeedController($scope, postServices, FeedPosts) {
+    $scope.feedPosts = new FeedPosts();
 
-    //postServices.getNewsFeed()
-    //    .then(function(data){
-    //        $scope.newsFeed = data;
-    //    });
-
-    //$scope.newsFeed = news;
 });

@@ -46,9 +46,7 @@ app.controller('UserController', function UserController($scope, userServices, $
 
     $scope.editProfile = function(data){
         userServices.editProfile(data)
-            .then(function(data){
-                console.log(data);
-            })
+        
     };
 
     userServices.getOwnData()

@@ -82,6 +82,7 @@ i{
 }
 .comments{
     font-size: 12px!important;
+    margin-top: 1em;
 }
 .singleFriend{
     border: 1px black;
@@ -105,6 +106,9 @@ a{
 }
 .writtenOn{
     font-size: 10px!important;
+}
+.likePost:hover{
+    cursor: pointer;
 }
 .newComment{
     margin-top: 0.2em;

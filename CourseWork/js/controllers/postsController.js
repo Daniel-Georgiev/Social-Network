@@ -1,6 +1,6 @@
-app.controller('PostsController', function PostsController($scope, postServices, SocialNetworkPosts) {
+app.controller('PostsController', function PostsController($scope, postServices) {
 
-    $scope.posts = new SocialNetworkPosts();
+    //$scope.posts = new SocialNetworkPosts();
 
     $scope.addNewPost = function(data, username){
         var postContent = {
@@ -9,7 +9,10 @@ app.controller('PostsController', function PostsController($scope, postServices,
         }
         postServices.addNewPost(postContent)
             .then(function(data){
-                console.log(data)
+                //$scope.feedPosts.feedPosts.unshift(data);
+
+                $scope.wallPosts.wallPosts.unshift(data);
+                $('#newPost > input').val('');
             })
     };
 
@@ -24,6 +27,22 @@ app.controller('PostsController', function PostsController($scope, postServices,
                 //        $scope.comments = data;
                 //    });
             })
+    }
+
+    $scope.likePost = function(postId){
+        postServices.likePost(postId)
+            .then(function(data){
+                console.log('liked post')
+            })
+    }
+
+    $scope.dislikePost = function(postId){
+        postServices.dislikePost(postId)
+            .then(function(data){
+                console.log('post disliked');
+            })
+
+
     }
 
 });
