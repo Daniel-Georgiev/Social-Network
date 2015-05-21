@@ -107,11 +107,11 @@ a{
 .writtenOn{
     font-size: 10px!important;
 }
-.likePost:hover{
+.hover:hover{
     cursor: pointer;
 }
 .newComment{
-    margin-top: 0.2em;
+    margin-top: 0.4em;
     display: inline-block;
 }
 #newPost>input{

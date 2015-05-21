@@ -26,13 +26,25 @@
                         <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
                         <p class="writtenOn">{{post.date | date:'medium'}}</p>
                         <h4>{{post.postContent}}</h4>
-                        <div class="comments" ng-repeat="comment in post.comments">
-                            <span><a href="#/users/{{comment.author.username}}">{{comment.author.name}}</a></span>
-                            <p>{{comment.commentContent}}</p>
+                        <p><i class="icon icon-heart hover" ng-if="!post.liked" ng-click="likePost(post)" title="Like"></i>
+                            <i class="icon icon-heart-broken hover" ng-if="post.liked" ng-click="dislikePost(post)" title="Dislike"></i>
+                            {{post.likesCount}}
+                        </p>
+                        <div class="comments">
+                            <p><span class="hover" ng-if="post.comments.length >= 3" ng-click="getAllPostComments(post)">All comments</span></p>
+                            <div ng-repeat="comment in post.comments">
+                                <span><a href="#/users/{{comment.author.username}}">{{comment.author.name}}</a></span>
+                                <p>
+                                    <i class="icon icon-heart hover" ng-if="!comment.liked" ng-click="likeComment(post,comment)" title="Like"></i>
+                                    <i class="icon icon-heart-broken hover" ng-if="comment.liked" ng-click="dislikeComment(post,comment)" title="Dislike"></i>
+                                    {{comment.likesCount}}
+                                    {{comment.commentContent}}
+                                </p>
+                            </div>
                         </div>
-                        <md-input-container  class="newComment">
-                            <input ng-model="newCommentContent" ng-enter="addCommentToPost(post.id , newCommentContent)" placeholder="Write a comment">
-                        </md-input-container>
+                            <md-input-container  class="newComment">
+                                <input ng-model="newCommentContent" ng-enter="addCommentToPost(post, newCommentContent)" placeholder="Write a comment">
+                            </md-input-container>
                     </div>
                     <md-divider></md-divider>
                 </md-list-item>

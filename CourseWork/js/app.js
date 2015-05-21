@@ -43,7 +43,7 @@ app.config(function ($routeProvider,cfpLoadingBarProvider) {
 
 app.run(function ($rootScope, $location, authService) {
     $rootScope.$on('$locationChangeStart', function (event) {
-        if ($location.path().indexOf("/home") != -1 && !authService.isLoggedIn()) {
+        if (!authService.isLoggedIn()) {
             $location.path('/login');
         }
     })

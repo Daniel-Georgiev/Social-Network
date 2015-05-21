@@ -1,7 +1,4 @@
 app.controller('PostsController', function PostsController($scope, postServices) {
-
-    //$scope.posts = new SocialNetworkPosts();
-
     $scope.addNewPost = function(data, username){
         var postContent = {
             postContent: data,
@@ -9,40 +6,63 @@ app.controller('PostsController', function PostsController($scope, postServices)
         }
         postServices.addNewPost(postContent)
             .then(function(data){
-                //$scope.feedPosts.feedPosts.unshift(data);
 
                 $scope.wallPosts.wallPosts.unshift(data);
                 $('#newPost > input').val('');
             })
     };
 
-    $scope.addCommentToPost = function(postId, data){
+    $scope.addCommentToPost = function(post, data){
         var postContent ={
             'commentContent': data
         };
-        postServices.postComment(postId, postContent)
+        postServices.postComment(post.id, postContent)
             .then(function(data){
-                //postServices.getPostComments(postId)
-                //    .then(function(data){
-                //        $scope.comments = data;
-                //    });
+               post.comments.push(data);
+                $('.newComment > input').val('');
             })
     }
 
-    $scope.likePost = function(postId){
-        postServices.likePost(postId)
+    $scope.getAllPostComments = function(post){
+        postServices.getPostComments(post.id)
             .then(function(data){
-                console.log('liked post')
+                post.comments = data;
             })
     }
 
-    $scope.dislikePost = function(postId){
-        postServices.dislikePost(postId)
+    $scope.likePost = function(post){
+
+        postServices.likePost(post.id)
             .then(function(data){
-                console.log('post disliked');
+                post.liked = true;
+                post.likesCount++;
+            })
+    }
+
+    $scope.dislikePost = function(post){
+        postServices.dislikePost(post.id)
+            .then(function(data){
+                post.liked = false;
+                post.likesCount--;
             })
 
 
+    }
+
+    $scope.likeComment = function(post, comment){
+        postServices.likeComment(post, comment)
+            .then(function(data){
+                comment.liked = true;
+                comment.likesCount++;
+            })
+    }
+
+    $scope.dislikeComment = function(post, comment){
+        postServices.dislikeComment(post, comment)
+            .then(function(data){
+                comment.liked = false;
+                comment.likesCount--;
+            })
     }
 
 });

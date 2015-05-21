@@ -3,7 +3,6 @@ app.controller('AuthController', function AuthController($scope, $location, auth
     if(sessionStorage['currentUser'] != undefined) {
         $scope.accessToken = authService.getCurrentUser().access_token
         $scope.username = authService.getCurrentUser().userName;
-        console.log($scope.username)
     }
 
     $scope.login = function (userData) {
@@ -19,9 +18,7 @@ app.controller('AuthController', function AuthController($scope, $location, auth
         authService.register(userData)
             .then(function(){
                 $location.path('/home')
-                console.log(userData);
             },function(error){
-                console.log(error);
                 notifyService.showError(error.message)
             })
 
