@@ -13,19 +13,18 @@
         </div>
         <md-button class="md-raised md-primary" ng-click="sendFriendRequest(userFullData.username)" ng-if="userFullData.username != username && !isMyFriend">Add friend</md-button>
         <md-content flex="50" offset="5" ng-controller="PostsController">
-            <md-list>
+            <md-list infinite-scroll='posts.nextPage()' infinite-scroll-disabled='posts.busy' infinite-scroll-distance='0.050'>
                 <md-input-container  id="newPost">
                     <input ng-model="postData" placeholder="What's on your mind?">
                 </md-input-container>
                 <md-button class="md-raised md-primary" ng-click="addNewPost(postData, userFullData.username)" id="addPostButton">Post</md-button>
-                <md-list-item class="md-3-line" ng-repeat="post in friendsWall">
+                <md-list-item class="md-3-line" ng-repeat="post in posts.socialNetWorkPosts">
                     <img ng-src="{{post.author.profileImageData}}"
                          class="md-avatar"/>
 
                     <div class="md-list-item-text">
                         <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
                         <h4>{{post.postContent}}</h4>
-
                         <p>{{post.date | date}}</p>
 
                         <div class="comments" ng-repeat="comment in post.comments">
@@ -36,6 +35,7 @@
                     </div>
                     <md-divider></md-divider>
                 </md-list-item>
+                <div ng-show='posts.busy'>{{posts.loadingMessage}}</div>
             </md-list>
         </md-content>
     </div>
