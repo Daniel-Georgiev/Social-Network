@@ -14,14 +14,7 @@ app.config(function ($routeProvider,cfpLoadingBarProvider) {
     $routeProvider.when('/home', {
         templateUrl: 'templates/feedView.html',
         controller: 'AuthController'
-        //resolve: {
-        //    news: function(postServices){
-        //        postServices.getNewsFeed()
-        //            .then(function (data) {
-        //                return data;
-        //            })
-        //    }
-        //}
+
     });
     $routeProvider.when('/me', {
         templateUrl: 'templates/ownWallView.html',
@@ -40,9 +33,6 @@ app.config(function ($routeProvider,cfpLoadingBarProvider) {
         controller: 'UserController'
     })
 
-    $routeProvider.otherwise(
-        {redirectTo: '/login'}
-    );
 
 });
 

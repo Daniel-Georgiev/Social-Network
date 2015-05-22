@@ -48,7 +48,7 @@
                         </p>
 
                         <div class="comments">
-                            <p><span class="hover" ng-if="post.comments.length >= 3"
+                            <p><span class="hover" ng-if="post.comments.length > 3"
                                      ng-click="getAllPostComments(post)">All comments</span></p>
 
                             <div ng-repeat="comment in post.comments">

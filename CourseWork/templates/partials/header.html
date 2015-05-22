@@ -15,10 +15,11 @@
             </div>
             <span flex></span>
             <md-input-container id="searchBar">
-                <input ng-model="searchTerm" placeholder="Search" ng-change="searchByName(searchTerm)">
+                <input ng-model="searchTerm" placeholder="Search" ng-change="searchByName(searchTerm)"
+                       ng-focus="hideResults()" ng-blur="hideResults()">
             </md-input-container>
 
-                <span id="resultList" ng-controller="SearchController">
+                <span id="resultList" ng-controller="SearchController" ng-show="showSearchResults" >
                     <md-list>
                         <md-list-item ng-repeat="result in searchResults">
                             <img ng-src="{{result.profileImageData}}" class="md-avatar"/>
