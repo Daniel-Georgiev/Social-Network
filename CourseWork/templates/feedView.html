@@ -26,12 +26,13 @@
                                     <i class="icon icon-heart hover" ng-if="!comment.liked" ng-click="likeComment(post,comment)" title="Like"></i>
                                     <i class="icon icon-heart-broken hover" ng-if="comment.liked" ng-click="dislikeComment(post,comment)" title="Dislike"></i>
                                     {{comment.likesCount}}
+                                    &nbsp;
                                     {{comment.commentContent}}
                                 </p>
                             </div>
                         </div>
                         <md-input-container  class="newComment">
-                        <input ng-model="newCommentContent" ng-enter="addCommentToPost(post, newCommentContent)" placeholder="Write a comment">
+                        <input ng-model="newCommentContent" ng-enter="addCommentToPost(post , newCommentContent)" placeholder="Write a comment">
                         </md-input-container>
                     </div>
                     <md-divider></md-divider>

@@ -1,47 +1,49 @@
-
 <div layout="row" layout-sm="column">
     <form name="formRegister" novalidate>
-    <md-content layout-padding layout="column" layout-sm="column">
-        <div layout="column" layout-sm="column">
-            <md-input-container flex>
-                <label>Username</label>
-                <input ng-model="registerData.username" required>
-            </md-input-container>
-            <md-input-container>
-                <label>Password</label>
-                <input ng-model="registerData.password" type="password" required>
-            </md-input-container>
-            <md-input-container flex>
-                <label>Confirm password</label>
-                <input ng-model="registerData.confirmPassword" type="password" required>
-            </md-input-container>
-            <md-input-container flex>
-                <label>Name</label>
-                <input ng-model="registerData.name" type="text" required>
-            </md-input-container>
-            <md-input-container flex>
-                <label>Email</label>
-                <input ng-model="registerData.email" type="email" required>
-            </md-input-container>
-            <md-button class="md-raised md-primary" ng-disabled="formRegister.$invalid" ng-click="register(registerData)">Register</md-button>
-        </div>
-    </md-content>
-        </form>
+        <md-content layout-padding layout="column" layout-sm="column">
+            <div layout="column" layout-sm="column">
+                <md-input-container flex>
+                    <label>Username</label>
+                    <input ng-model="registerData.username" required>
+                </md-input-container>
+                <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="registerData.password" type="password" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Confirm password</label>
+                    <input ng-model="registerData.confirmPassword" type="password" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Name</label>
+                    <input ng-model="registerData.name" type="text" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Email</label>
+                    <input ng-model="registerData.email" type="email" required>
+                </md-input-container>
+                <md-button class="md-raised md-primary" ng-disabled="formRegister.$invalid"
+                           ng-click="register(registerData)">Register
+                </md-button>
+            </div>
+        </md-content>
+    </form>
     <span flex></span>
 
     <form name="formLogin" novalidate>
-    <md-content layout-padding layout="column" layout-sm="column">
-        <div layout="column" layout-sm="column">
-            <md-input-container flex>
-                <label>Username</label>
-                <input ng-model="userData.username" required>
-            </md-input-container>
-            <md-input-container flex>
-                <label>Password</label>
-                <input ng-model="userData.password" type="password" required>
-            </md-input-container>
-        </div>
-        <md-button class="md-raised md-primary" ng-disabled="formLogin.$invalid" ng-click="login(userData)">Login</md-button>
-    </md-content>
-        </form>
+        <md-content layout-padding layout="column" layout-sm="column">
+            <div layout="column" layout-sm="column">
+                <md-input-container flex>
+                    <label>Username</label>
+                    <input ng-model="userData.username" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Password</label>
+                    <input ng-model="userData.password" type="password" required>
+                </md-input-container>
+            </div>
+            <md-button class="md-raised md-primary" ng-disabled="formLogin.$invalid" ng-click="login(userData)">Login
+            </md-button>
+        </md-content>
+    </form>
 </div>

@@ -1,6 +1,6 @@
 app.controller('UploadCtrl', function UploadCtrl($scope) {
     $scope.profilePicture = function(fileInputField) {
-        delete $scope.ownData.profileImageData;
+
         var file = fileInputField.files[0];
         if (file.type.match(/image\/.*/)) {
             var reader = new FileReader();

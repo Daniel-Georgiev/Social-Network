@@ -35,6 +35,11 @@ app.config(function ($routeProvider,cfpLoadingBarProvider) {
         templateUrl: 'templates/friends.html',
         controller: 'AppController'
     });
+    $routeProvider.when('/me/password',{
+        templateUrl: 'templates/changePassView.html',
+        controller: 'UserController'
+    })
+
     $routeProvider.otherwise(
         {redirectTo: '/login'}
     );

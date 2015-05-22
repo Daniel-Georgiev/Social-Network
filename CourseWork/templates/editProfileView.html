@@ -1,4 +1,4 @@
-<form ng-controller="AppController" novalidate>
+<form ng-controller="AppController" name="editProfileForm" novalidate>
     <md-content layout-padding layout="column" layout-sm="column">
         <div layout="column" layout-sm="column">
             <md-input-container flex>
@@ -10,8 +10,9 @@
                 <input ng-model="ownData.email" type="email" required>
             </md-input-container>
             <div ng-controller="UploadCtrl">
-                <div class="profileImage" id="uploadProfileImg"></div>
-                    <input type="file" name="upload" onchange="angular.element(this).scope().profilePicture(this)">
+                <div class="profileImage" id="uploadProfileImg" ></div>
+
+                <input type="file" name="upload" onchange="angular.element(this).scope().profilePicture(this)">
 
                 <div class="coverImage" id="uploadCoverImg"></div>
                 <input type="file" name="upload" onchange="angular.element(this).scope().coverPicture(this)">
@@ -20,12 +21,14 @@
             <p>Selected Value: <span class="radioValue">{{ ownData.gender}}</span></p>
 
             <form action="">
-            <md-radio-group ng-model="ownData.gender">
-                <md-radio-button value="1"  > male</md-radio-button>
-                <md-radio-button value="2" > female</md-radio-button>
-                <md-radio-button value="0"  > other</md-radio-button>
-            </md-radio-group>
-                <md-button type="submit" value="Submit" class="md-raised md-primary" ng-click="editProfile(ownData)">Edit</md-button>
+                <md-radio-group ng-model="ownData.gender">
+                    <md-radio-button value="1"> male</md-radio-button>
+                    <md-radio-button value="2"> female</md-radio-button>
+                    <md-radio-button value="0"> other</md-radio-button>
+                </md-radio-group>
+                <md-button type="submit" value="Submit" class="md-raised md-primary"
+                           ng-disabled="editProfileForm.$invalid" ng-click="editProfile(ownData)">Edit
+                </md-button>
             </form>
         </div>
     </md-content>

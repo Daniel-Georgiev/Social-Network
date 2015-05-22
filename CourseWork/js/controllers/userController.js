@@ -4,10 +4,10 @@ app.controller('UserController', function UserController($scope, userServices, $
             $scope.ownFriends = data;
 
         })
-    $scope.sendFriendRequest = function(name){
-        userServices.sendFriendRequest(name)
+    $scope.sendFriendRequest = function(userFulldata){
+        userServices.sendFriendRequest(userFulldata.username)
             .then(function(data){
-                console.log(data);
+                userFulldata.hasPendingRequest = true;
             })
     }
     userServices.getFriendRequests()
@@ -18,7 +18,7 @@ app.controller('UserController', function UserController($scope, userServices, $
     $scope.acceptFriendRequest = function(id){
         userServices.acceptFriendRequest(id)
             .then(function(data){
-                console.log(data);
+                $scope.ownFriends.push(data);
             })
     }
 
@@ -32,17 +32,25 @@ app.controller('UserController', function UserController($scope, userServices, $
 
     var username = $location.path().split('/users/')[1];
     if(username != undefined) {
-        userServices.getFriendFriends(username)
-            .then(function (data) {
-                $scope.friendFriends = data;
-            })
-
         userServices.getUserFullData(username)
             .then(function (data) {
                 $scope.userFullData = data;
             })
+        if( $scope.username != username) {
+            userServices.getFriendFriends(username)
+                .then(function (data) {
+                    $scope.friendFriends = data;
+                })
+
+            userServices.getFriendFriendsPreview(username)
+                .then(function (data) {
+                    $scope.friendFriendsPreview = data;
+                })
+        }
 
     }
+
+
 
     $scope.editProfile = function(data){
         userServices.editProfile(data)
@@ -53,6 +61,14 @@ app.controller('UserController', function UserController($scope, userServices, $
         .then(function(data){
             $scope.ownData = data;
         })
+
+    $scope.changePassword = function(data){
+        userServices.changePassword(data)
+            .then(function(data){
+                console.log(data);
+                $location.path('/home')
+            })
+    }
 
 
 });

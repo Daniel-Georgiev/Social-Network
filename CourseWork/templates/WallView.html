@@ -6,45 +6,69 @@
                     <div style="background: url('{{userFullData.coverImageData}}') no-repeat center"
                          id="coverImage">
                         <img ng-src="{{userFullData.profileImageData}}" class="md-card-image">
+
                         <h1>{{userFullData.name}}</h1>
                     </div>
                 </md-card>
             </md-content>
         </div>
-        <md-button class="md-raised md-primary" ng-click="sendFriendRequest(userFullData.username)" ng-if="userFullData.username != username && isMyFriend">Add friend</md-button>
-        <md-content flex="50" offset="5" ng-controller="PostsController">
-            <md-list infinite-scroll='wallPosts.nextPage()' infinite-scroll-disabled='posts.busy' infinite-scroll-distance='0.050'>
-                <md-input-container  id="newPost">
+        <md-button class="md-raised md-primary"
+                   ng-click="showButton = !showButton; sendFriendRequest(userFullData)"
+                   ng-show="userFullData.username != username && !showButton && !userFullData.isFriend && !userFullData.hasPendingRequest">
+            Add friend
+        </md-button>
+        <md-button class="md-raised md-primary" ng-show="userFullData.hasPendingRequest && !userFullData.isFriend">
+            Pending
+        </md-button>
+
+        <md-content flex="50" offset="5" ng-controller="PostsController" style="width: 50%">
+            <md-list infinite-scroll='wallPosts.nextPage()' infinite-scroll-disabled='posts.busy'
+                     infinite-scroll-distance='0.050'>
+                <md-input-container id="newPost">
                     <input ng-model="postData" placeholder="What's on your mind?">
                 </md-input-container>
-                <md-button class="md-raised md-primary" ng-click="addNewPost(postData, userFullData.username)" id="addPostButton">Post</md-button>
+                <md-button class="md-raised md-primary" ng-click="addNewPost(postData, userFullData.username)"
+                           id="addPostButton">Post
+                </md-button>
                 <md-list-item class="md-3-line" ng-repeat="post in wallPosts.wallPosts">
                     <img ng-src="{{post.author.profileImageData}}"
                          class="md-avatar"/>
 
                     <div class="md-list-item-text">
                         <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
+
                         <p class="writtenOn">{{post.date | date:'medium'}}</p>
                         <h4>{{post.postContent}}</h4>
-                        <p><i class="icon icon-heart hover" ng-if="!post.liked" ng-click="likePost(post)" title="Like"></i>
-                            <i class="icon icon-heart-broken hover" ng-if="post.liked" ng-click="dislikePost(post)" title="Dislike"></i>
+
+                        <p><i class="icon icon-heart hover" ng-if="!post.liked" ng-click="likePost(post)"
+                              title="Like"></i>
+                            <i class="icon icon-heart-broken hover" ng-if="post.liked" ng-click="dislikePost(post)"
+                               title="Dislike"></i>
                             {{post.likesCount}}
                         </p>
+
                         <div class="comments">
-                            <p><span class="hover" ng-if="post.comments.length >= 3" ng-click="getAllPostComments(post)">All comments</span></p>
+                            <p><span class="hover" ng-if="post.comments.length >= 3"
+                                     ng-click="getAllPostComments(post)">All comments</span></p>
+
                             <div ng-repeat="comment in post.comments">
                                 <span><a href="#/users/{{comment.author.username}}">{{comment.author.name}}</a></span>
+
                                 <p>
-                                    <i class="icon icon-heart hover" ng-if="!comment.liked" ng-click="likeComment(post,comment)" title="Like"></i>
-                                    <i class="icon icon-heart-broken hover" ng-if="comment.liked" ng-click="dislikeComment(post,comment)" title="Dislike"></i>
+                                    <i class="icon icon-heart hover" ng-if="!comment.liked"
+                                       ng-click="likeComment(post,comment)" title="Like"></i>
+                                    <i class="icon icon-heart-broken hover" ng-if="comment.liked"
+                                       ng-click="dislikeComment(post,comment)" title="Dislike"></i>
                                     {{comment.likesCount}}
+                                    &nbsp;
                                     {{comment.commentContent}}
                                 </p>
                             </div>
                         </div>
-                            <md-input-container  class="newComment">
-                                <input ng-model="newCommentContent" ng-enter="addCommentToPost(post, newCommentContent)" placeholder="Write a comment">
-                            </md-input-container>
+                        <md-input-container class="newComment">
+                            <input ng-model="newCommentContent" ng-enter="addCommentToPost(post, newCommentContent)"
+                                   placeholder="Write a comment">
+                        </md-input-container>
                     </div>
                     <md-divider></md-divider>
                 </md-list-item>
@@ -53,7 +77,9 @@
         </md-content>
     </div>
     <div id="friendsContainer" ng-if="userFullData.username != username">
-        <div ng-repeat="friend in friendFriends" class="singleFriend">
+        <p>Friends: {{friendFriendsPreview.totalCount}} </p>
+
+        <div ng-repeat="friend in friendFriendsPreview.friends" class="singleFriend">
             <a href="#/users/{{friend.username}}">
                 <img ng-src="{{friend.profileImageData}}" class="friendProfilePic"/>
                 <span>{{friend.name}}</span>

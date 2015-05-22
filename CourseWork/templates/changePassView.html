@@ -1,0 +1,23 @@
+<form ng-controller="AppController" name="changePasswordForm" novalidatee>
+    <md-content layout-padding layout="column" layout-sm="column">
+            <div layout="column" layout-sm="column">
+                <md-input-container flex>
+                    <label>Old password</label>
+                    <input type="password" ng-model="changePasswordData.oldPassword" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>New password</label>
+                    <input type="password" ng-model="changePasswordData.newPassword" type="email" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Confirm password</label>
+                    <input type="password" ng-model="changePasswordData.confirmPassword" type="email" required>
+                </md-input-container>
+                <md-button type="submit" value="Submit" ng-disabled="changePasswordForm.$invalid"
+                           class="md-raised md-primary"
+                           ng-click="changePassword(changePasswordData)">
+                    Edit
+                </md-button>
+            </div>
+    </md-content>
+</form>

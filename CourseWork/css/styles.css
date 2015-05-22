@@ -59,6 +59,17 @@ button:disabled{
     width: 300px;
     height: 100px;
 }
+
+form[name="changePasswordForm"]{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+form[name="editProfileForm"]{
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 5%;
+}
 i{
     font-size: 18px;
 }
@@ -74,15 +85,22 @@ i{
 }
 #friendsContainer{
     box-shadow: 0 5px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
-    width: 31em;
+    width: 20em;
     margin: 0 auto;
+    padding: 10px;
     min-height: 10em;
-    max-height: 10em;
+    max-height: 25em;
+    position: absolute;
+    top: 100%;
+    right: 20%;
     
 }
 .comments{
     font-size: 12px!important;
     margin-top: 1em;
+}
+.comments i{
+    font-size: 14px;
 }
 .singleFriend{
     border: 1px black;

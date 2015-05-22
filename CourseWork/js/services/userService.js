@@ -100,9 +100,35 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
         return deferred.promise;
     }
 
+    function getFriendFriendsPreview(username){
+        var deferred = $q.defer();
+        $http.get(baseServiceUrl+ 'users/'+ username +'/friends/preview')
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
+    }
+
     function getUserFullData(username){
         var deferred = $q.defer();
         $http.get(baseServiceUrl+ 'users/'+ username )
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
+    }
+
+    function changePassword(data){
+        var deferred = $q.defer();
+        $http.put(baseServiceUrl+ 'me/changepassword', data)
             .success(function (data, status, headers, config) {
                 deferred.resolve(data);
             })
@@ -125,7 +151,9 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
         acceptFriendRequest: acceptFriendRequest,
         declineFriendRequest: declineFriendRequest,
         getFriendFriends: getFriendFriends,
-        getUserFullData: getUserFullData
+        getFriendFriendsPreview: getFriendFriendsPreview,
+        getUserFullData: getUserFullData,
+        changePassword: changePassword
 
 
     }
