@@ -1,16 +1,29 @@
 app.factory('userServices', function($http, baseServiceUrl, $q){
     function editProfile(editData){
+        var deferred = $q.defer();
         $http.put(baseServiceUrl + 'me', editData)
             .success(function (data, status, headers, config) {
-                console.log(data);
+                deferred.resolve(data);
             })
             .error(function (data, status, headers, config) {
+                deferred.reject(data);
             });
+        return deferred.promise;
     }
 
-    function editPassword(editData){
-        //todo
+    function changePassword(data){
+        var deferred = $q.defer();
+        $http.put(baseServiceUrl+ 'me/changepassword', data)
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
     }
+
     function getOwnData(){
         var deferred = $q.defer();
         $http.get(baseServiceUrl + 'me')
@@ -126,25 +139,13 @@ app.factory('userServices', function($http, baseServiceUrl, $q){
         return deferred.promise;
     }
 
-    function changePassword(data){
-        var deferred = $q.defer();
-        $http.put(baseServiceUrl+ 'me/changepassword', data)
-            .success(function (data, status, headers, config) {
-                deferred.resolve(data);
-            })
-            .error(function (data, status, headers, config) {
-                deferred.reject(data);
-            });
 
-        return deferred.promise;
-    }
 
 
 
     return{
         getOwnFriends: getOwnFriends,
         editProfile: editProfile,
-        editPassword: editPassword,
         getOwnData: getOwnData,
         sendFriendRequest: sendFriendRequest,
         getFriendRequests: getFriendRequests,

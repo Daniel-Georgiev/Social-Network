@@ -6,7 +6,7 @@ app.controller('UploadCtrl', function UploadCtrl($scope) {
             var reader = new FileReader();
             reader.onload = function() {
                 $scope.ownData.profileImageData = reader.result;
-                $(".profileImage").html("<img src='" + reader.result + "' id='uploadProfileImg'>");
+                $("#uploadProfileImg").attr('src', reader.result);
             };
             reader.readAsDataURL(file);
         } else {
@@ -21,7 +21,7 @@ app.controller('UploadCtrl', function UploadCtrl($scope) {
             var reader = new FileReader();
             reader.onload = function() {
                 $scope.ownData.coverImageData = reader.result;
-                $(".coverImage").html("<img src='" + reader.result + "' id='uploadCoverImg'>");
+                $("#uploadCoverImg").attr('src', reader.result)
             };
             reader.readAsDataURL(file);
         } else {

@@ -10,11 +10,10 @@
                 <input ng-model="ownData.email" type="email" required>
             </md-input-container>
             <div ng-controller="UploadCtrl">
-                <div class="profileImage" id="uploadProfileImg" ></div>
-
+                <img id="uploadProfileImg" ng-src="{{ownData.profileImageData}}" >
                 <input type="file" name="upload" onchange="angular.element(this).scope().profilePicture(this)">
 
-                <div class="coverImage" id="uploadCoverImg"></div>
+                <img id="uploadCoverImg" ng-src="{{ownData.coverImageData}}">
                 <input type="file" name="upload" onchange="angular.element(this).scope().coverPicture(this)">
 
             </div>
