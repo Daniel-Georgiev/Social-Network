@@ -16,17 +16,13 @@ app.config(function ($routeProvider,cfpLoadingBarProvider) {
         controller: 'AuthController'
 
     });
-    $routeProvider.when('/me', {
-        templateUrl: 'templates/ownWallView.html',
-        controller: 'AppController'
-    });
     $routeProvider.when('/users/:username',{
         templateUrl: 'templates/WallView.html',
-        controller: 'AppController'
+        controller: 'AuthController'
     });
     $routeProvider.when('/me/friends',{
         templateUrl: 'templates/friends.html',
-        controller: 'AppController'
+        controller: 'AuthController'
     });
     $routeProvider.when('/me/password',{
         templateUrl: 'templates/changePassView.html',

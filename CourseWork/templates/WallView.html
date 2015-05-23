@@ -6,7 +6,6 @@
                     <div style="background: url('{{userFullData.coverImageData}}') no-repeat center"
                          id="coverImage">
                         <img ng-src="{{userFullData.profileImageData}}" class="md-card-image">
-
                         <h1>{{userFullData.name}}</h1>
                     </div>
                 </md-card>
@@ -17,7 +16,8 @@
                    ng-show="userFullData.username != username && !showButton && !userFullData.isFriend && !userFullData.hasPendingRequest">
             Add friend
         </md-button>
-        <md-button class="md-raised md-primary" ng-show="userFullData.hasPendingRequest && !userFullData.isFriend">
+        <md-button class="md-raised md-primary"
+                   ng-show="userFullData.username != username && userFullData.hasPendingRequest && !userFullData.isFriend">
             Pending
         </md-button>
 
@@ -36,7 +36,7 @@
 
                     <div class="md-list-item-text">
                         <h3><a href="#/users/{{post.author.username}}">{{post.author.name}}</a></h3>
-
+                        <span class="hover" ng-click="deletePost(post)" ng-show="post.author.username == username">&#10007;</span>
                         <p class="writtenOn">{{post.date | date:'medium'}}</p>
                         <h4>{{post.postContent}}</h4>
 

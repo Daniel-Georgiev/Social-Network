@@ -10,6 +10,7 @@
                     <div class="md-list-item-text">
                         <h3><a href="#/users/{{post.author.username}}"><strong>{{post.author.name}}</strong></a> wrote on
                             <a href="#/users/{{post.wallOwner.username}}">{{post.wallOwner.name}}</a>'s wall</h3>
+                        <!--<span class="hover" ng-click="deletePost(post)" ng-show="post.author.username == username">&#9747;</span>-->
                         <p class="writtenOn">{{post.date | date:'medium'}}</p>
 
                         <h4>{{post.postContent}}</h4>

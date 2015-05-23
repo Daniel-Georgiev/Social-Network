@@ -49,6 +49,23 @@ app.controller('PostsController', function PostsController($scope, postServices)
 
     }
 
+    $scope.editPost = function(post){
+        postServices.editPost(post)
+            .then(function(data){
+                post.postContent = data;
+            })
+    }
+
+    $scope.deletePost = function(post){
+        postServices.deletePost(post)
+            .then(function(data){
+               var index = $scope.wallPosts.wallPosts.indexOf(post);
+                if(index >=0 && index != -1) {
+                    $scope.wallPosts.wallPosts.splice(index, 1);
+                }
+            })
+    }
+
     $scope.likeComment = function(post, comment){
         postServices.likeComment(post, comment)
             .then(function(data){

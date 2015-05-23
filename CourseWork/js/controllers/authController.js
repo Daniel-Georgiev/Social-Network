@@ -1,7 +1,7 @@
 app.controller('AuthController', function AuthController($scope, $location, authService, $http, notifyService){
     $scope.authService = authService;
     if(sessionStorage['currentUser'] != undefined) {
-        $scope.accessToken = authService.getCurrentUser().access_token
+        $scope.accessToken = authService.getCurrentUser().access_token;
         $scope.username = authService.getCurrentUser().userName;
     }
 
