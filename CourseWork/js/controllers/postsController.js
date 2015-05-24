@@ -82,4 +82,12 @@ app.controller('PostsController', function PostsController($scope, postServices)
             })
     }
 
+    $scope.deleteComment = function(post, comment){
+        postServices.deleteComment(post,comment)
+            .then(function(data){
+                var index = post.comments.indexOf(comment);
+                post.comments.splice(index,1);
+            })
+    }
+
 });

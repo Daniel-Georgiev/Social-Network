@@ -130,6 +130,19 @@ app.factory('postServices', function($http, baseServiceUrl, $q) {
         return deferred.promise;
     }
 
+    function deleteComment(post, comment){
+        var deferred = $q.defer();
+        $http.delete(baseServiceUrl+ 'posts/'+post.id+'/comments/'+ comment.id)
+            .success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, headers, config) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
+    }
+
 
     function getWall(username){
         var deferred = $q.defer();
@@ -156,6 +169,7 @@ app.factory('postServices', function($http, baseServiceUrl, $q) {
         deletePost: deletePost,
         likeComment: likeComment,
         dislikeComment: dislikeComment,
+        deleteComment: deleteComment,
         getPostById: getPostById,
         getWall: getWall
     }

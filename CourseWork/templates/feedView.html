@@ -9,8 +9,8 @@
                     <img ng-src="{{post.author.profileImageData}}" class="md-avatar"/>
                     <div class="md-list-item-text">
                         <h3><a href="#/users/{{post.author.username}}"><strong>{{post.author.name}}</strong></a> wrote on
-                            <a href="#/users/{{post.wallOwner.username}}">{{post.wallOwner.name}}</a>'s wall</h3>
-                        <!--<span class="hover" ng-click="deletePost(post)" ng-show="post.author.username == username">&#9747;</span>-->
+                            <span ng-show="post.author.name == post.wallOwner.name">his/her</span>
+                            <a ng-show="post.author.name != post.wallOwner.name" href="#/users/{{post.wallOwner.username}}">{{post.wallOwner.name}}'s</a> wall</h3>
                         <p class="writtenOn">{{post.date | date:'medium'}}</p>
 
                         <h4>{{post.postContent}}</h4>
@@ -29,6 +29,8 @@
                                     {{comment.likesCount}}
                                     &nbsp;
                                     {{comment.commentContent}}
+
+                                    <span class="hover" ng-click="deleteComment(post, comment)" ng-show="comment.author.username == username">&#9747;</span>
                                 </p>
                             </div>
                         </div>

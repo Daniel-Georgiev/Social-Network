@@ -128,6 +128,7 @@ a{
 .hover:hover{
     cursor: pointer;
 }
+
 .newComment{
     margin-top: 0.4em;
     display: inline-block;
