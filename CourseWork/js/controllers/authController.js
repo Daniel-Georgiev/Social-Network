@@ -8,6 +8,7 @@ app.controller('AuthController', function AuthController($scope, $location, auth
     $scope.login = function (userData) {
         authService.login(userData)
             .then(function(){
+                sessionStorage.currentUser = JSON.stringify(data)
                 $location.path('/home')
             },function(error){
                 notifyService.showError(error.error_description);
@@ -17,6 +18,7 @@ app.controller('AuthController', function AuthController($scope, $location, auth
     $scope.register = function(userData){
         authService.register(userData)
             .then(function(){
+                sessionStorage.currentUser = JSON.stringify(data)
                 $location.path('/home')
             },function(error){
                 notifyService.showError(error.message)

@@ -62,6 +62,8 @@
                                     {{comment.likesCount}}
                                     &nbsp;
                                     {{comment.commentContent}}
+                                    &nbsp;
+                                    <span class="hover" ng-click="deleteComment(post, comment)" ng-show="comment.author.username == username">&#10007;</span>
                                 </p>
                             </div>
                         </div>
