@@ -55,7 +55,7 @@ app.controller('UserController', function UserController($scope, userServices, $
     $scope.editProfile = function(data){
         userServices.editProfile(data)
             .then(function(data){
-                $location.path('#/home')
+                $location.path('/home')
             })
         
     };
@@ -69,7 +69,7 @@ app.controller('UserController', function UserController($scope, userServices, $
         userServices.changePassword(data)
             .then(function(data){
                 console.log(data);
-                $location.path('#/home')
+                $location.path('/home')
             })
     }
 
