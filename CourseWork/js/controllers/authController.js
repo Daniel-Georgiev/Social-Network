@@ -5,10 +5,12 @@ app.controller('AuthController', function AuthController($scope, $location, auth
         $scope.username = $scope.authService.getCurrentUser().userName;
     }
 
+
     $scope.login = function (userData) {
         authService.login(userData)
-            .then(function(){
+            .then(function(data){
                 sessionStorage.currentUser = JSON.stringify(data)
+                $scope.username = $scope.authService.getCurrentUser().userName;
                 $location.path('/home')
             },function(error){
                 notifyService.showError(error.error_description);
@@ -17,7 +19,7 @@ app.controller('AuthController', function AuthController($scope, $location, auth
     };
     $scope.register = function(userData){
         authService.register(userData)
-            .then(function(){
+            .then(function(data){
                 sessionStorage.currentUser = JSON.stringify(data)
                 $location.path('/home')
             },function(error){
